@@ -1,0 +1,12 @@
+
+db.gestao_vendas
+.ipynb_checkpoints
+.vscode
+venv/
+*.sqlite3
+*.idea
+*pyc
+.DS_Store
+media
+.env
+__pycache__
