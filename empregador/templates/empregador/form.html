@@ -1,1 +1,39 @@
 form empregador
+
+<form id="form_up" class='formulario'  method="POST" >
+    {% csrf_token %}
+    <hr> 
+    <div>
+        <label>Nome da vaga</label>
+        <input placeholder=" Nome da vaga..." type="text" id="nome_da_vaga" name="nome_da_vaga" required/>
+    </div>
+    <div>
+        <label>Faixa salarial</label> <br>
+            <select  type="search" id="faixa_salarial" name="faixa_salarial" required/>
+                <tr>
+                    <option>Selecionar</option>
+                    <option value='Até 1.000'> Até 1.000</option>
+                    <option value='1000 a 2.0000'> 1000 a 2.0000</option>
+                    <option value='2.000 a 3.000'> 2.000 a 3.000</option>
+                    <option value='Acima de  3.000'> Acima de  3.000</option>
+                </tr>
+            </select>
+    </div>
+    <div>
+        <label>Escolaridade minima</label> <br>
+        <select  type="search" id="escolaridade_minima" name="escolaridade_minima" required/>
+            <tr>
+                <option >Selecionar</option>
+                <option value='Ensino fundamental'> Ensino fundamental</option>
+                <option value='Ensino médio'> Ensino médio</option>
+                <option value='Tecnólogo'> Tecnólogo</option>
+                <option value='Ensino Superior'> Ensino Superior</option>
+                <option value='Pós / MBA / Mestrado'> Pós / MBA / Mestrado</option>
+                <option value='Doutorado'> Doutorado</option>
+            </tr>
+        </select>
+    </div>
+        <hr>
+       <button type="submit"> Salvar</button>
+   
+</form>

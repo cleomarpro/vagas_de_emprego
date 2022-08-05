@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'empregador',
     'candidato',
-    'usuarios.apps.UsuariosConfig',
+    'usuarios',
     'home'
 ]
 
@@ -136,7 +136,7 @@ STATICFILES_DIRS = [ 'static',]
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_ROOT = '/home/gestao_varejo/media'
+MEDIA_ROOT = '/home/vagas_de_emprego/media'
 MEDIA_URL = '/media/'
-STATIC_ROOT = '/home/gestao_varejo/static'
+STATIC_ROOT = '/home/vagas_de_emprego/static'
 
