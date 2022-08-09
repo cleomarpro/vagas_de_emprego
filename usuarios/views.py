@@ -26,9 +26,11 @@ class CandidatoUserCreate( View):
             else:
                 
                 usuario = User.objects.create_user(
-                    email= request.POST['email'],
-                    password= request.POST['password'],
-                    username= request.POST['email'],
+                    email = request.POST['email'],
+                    password = request.POST['password'],
+                    username = request.POST['email'],
+                    first_name = request.POST['first_name'],
+                    last_name = request.POST['last_name'],
                     )
                 return redirect('candidato', id=id) 
             
@@ -54,6 +56,8 @@ class RecrutadorUseCreate(View):
                 email= request.POST['email'],
                 password= request.POST['password'],
                 username= request.POST['email'],
+                first_name = request.POST['first_name'],
+                last_name = request.POST['last_name'],
                 )
             return redirect('vagas_cadastradas')
        

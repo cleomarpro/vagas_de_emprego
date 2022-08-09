@@ -6,7 +6,7 @@
     <meta charcet="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel = "icon" type = "image/png" href = "{% static 'img/v.png' %}"/>
-    <title> VieWorld  </title>
+    <title> ?  </title>
 
     <script type="module" src="{% static 'js/mascaras.js' %}"></script>
     <link rel="stylesheet" href= "{% static 'Style/home.css'%}">
@@ -14,7 +14,7 @@
     <meta charcet="UTF-8">
     <meta name="cor" content="width=device-width,initial=scale=1">
     <meta name="description" content="Rede SociL cor">
-   <!-- <meta name="keyWords" content="fluxo de caixa, gestão, controle de estoque"> -->
+   <meta name="keyWords" content="emprego"> 
     <meta name="author" content="cor">
 </head>
 <body>
@@ -24,7 +24,7 @@
         
         
         <form class='form_logim' method="post" action="{% url 'login' %}">
-            <P  style="color:black; font-size: 25px;">VieWorld</P>
+            <P  style="color:black; font-size: 25px;">Login</P>
             {% csrf_token %}
 
             {% if form.errors %}
@@ -54,7 +54,6 @@
             <input id='bt_login' type="submit" value="Entrar">
             <input type="hidden" name="next" value="{{ next }}">
 
-             {# Assumes you setup the password_reset view in your URLconf #}
              <br>
              <br>
              <hr>

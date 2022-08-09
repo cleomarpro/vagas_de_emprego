@@ -1,26 +1,7 @@
-<h1>Cadastro de usuário</h1>
 
-<!DOCTYPE html>
-
-<html lang= "pt-br" >
-<head >
-    <meta charcet="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title> VieWorld  </title>
-
-    <meta charcet="UTF-8">
-    <meta name="cor" content="width=device-width,initial=scale=1">
-    <meta name="description" content="Rede SociL cor">
-   <!-- <meta name="keyWords" content="fluxo de caixa, gestão, controle de estoque"> -->
-    <meta name="author" content="cor">
-</head>
-<body> 
-    
-
-    <div class='div_mae'>
       
         <form class='form_logim' method="post" >
-            <P  style="color:black; font-size: 25px;">VieWorld</P>
+            <P  style="color:black; font-size: 25px;">Novo reccrutador</P>
             {% csrf_token %}
             <hr>
             {% if mensagen_de_erro_email %}
@@ -31,15 +12,21 @@
             <input class="form_novo_usuário"   Type='email' name='email' 
                 id='email' maxlength="50" placeholder="E-mail*..." required/>
             <br>
-            <br>
+            <br> 
             <input class="form_novo_usuário" Type='password' name='password' id='password' 
                 minlength="6" maxlength="20" placeholder="Senha*..." required/>
-            <br>     
+            <br>  
+            <br>       
+            <input class="form_novo_usuário" Type='text' name='first_name' id='first_name' 
+                minlength="6" maxlength="20" placeholder="Nome..." required/>
+            <br>  
+            <br> 
+            <input class="form_novo_usuário" Type='text' name='last_name' id='last_name' 
+                minlength="6" maxlength="20" placeholder="Segundo Nome..." required/>
+            <br> 
+            <br>
             <input id='bt_login' type="submit" value="Cadastre-se">
-            <br>
-            <br>
+            <br> 
             
         </form>
 
-<body>
-</html>

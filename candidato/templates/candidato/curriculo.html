@@ -1,6 +1,11 @@
-{% for candidato in candidato %}
-<li>{{candidato.vaga.nome_da_vaga}}</li>
-{%endfor%}
+<h3>Parabêns {{request.user.first_name}}, sua candidatura
+     foi realizada com sucesso para a vaga {{candidato.vaga.nome_da_vaga}}</h3>
+
+<h2>Dados pessoais</h2>
+<li>{{request.user.first_name}} {{request.user.last_name}}</li>
+
+<h2>Pretenção salarial</h2>
+<li>{{candidato.pretecao_salarial}}</li>
 <h2> Escolaridade</h2>
 {%for escolaridade in escolaridade%}
 <li>{{escolaridade.instituicao}}</li>
@@ -9,6 +14,7 @@
 <li>{{escolaridade.data_de_termino}}</li>
 <li>{{escolaridade.obiservacao}}</li>
 {%endfor%}
+
 <h2>Experiência</h2>
 {%for experiencia in experiencia%}
 <li>{{experiencia.nome_de_empresa}}</li>

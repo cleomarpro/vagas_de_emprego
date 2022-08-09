@@ -8,7 +8,7 @@ from candidato.models import Candidato, Experiencia, Escolaridade
 class Curriculo(View):
     def get(self, request, id):
         data = {}
-        data['candidato'] = Candidato.objects.filter(id = id)
+        data['candidato'] = Candidato.objects.get(id = id)
         data['escolaridade'] = Escolaridade.objects.filter(candidato_id = id)
         data['experiencia'] = Experiencia.objects.filter(candidato_id = id)
         return render(
@@ -20,9 +20,9 @@ class MinhasVagas(View):
         user_logado = request.user.id
         data['minhas_vagas'] = Candidato.objects.filter(autor = user_logado)
         return render(
-            request, 'candidato/minhas_vagas.html')
+            request, 'candidato/minhas_vagas.html', data)
 
-class Vagas(View):
+class Vagas(LoginRequiredMixin, View):
     def get(self, request):
         data = {}
         vagas = Vaga.objects.all()

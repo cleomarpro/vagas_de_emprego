@@ -20,7 +20,7 @@
     <div class='div_mae'>
       
         <form class='form_logim' method="post" >
-            <P  style="color:black; font-size: 25px;">VieWorld</P>
+            <P  style="color:black; font-size: 25px;">Novo candidato</P>
             {% csrf_token %}
             <hr>
             {% if mensagen_de_erro_email %}
@@ -34,7 +34,13 @@
             <br>
             <input class="form_novo_usuário" Type='password' name='password' id='password' 
                 minlength="6" maxlength="20" placeholder="Senha*..." required/>
-            <br>     
+            <br>    
+            <input class="form_novo_usuário" Type='text' name='first_name' id='first_name' 
+                minlength="6" maxlength="20" placeholder="Nome..." required/>
+            <br>  
+            <input class="form_novo_usuário" Type='text' name='last_name' id='last_name' 
+                minlength="6" maxlength="20" placeholder="Segundo Nome..." required/>
+            <br>   
             <input id='bt_login' type="submit" value="Cadastre-se">
             <br>
             <br>
