@@ -1,0 +1,22 @@
+{% for candidato in candidato %}
+<li>{{candidato.vaga.nome_da_vaga}}</li>
+{%endfor%}
+<h2> Escolaridade</h2>
+{%for escolaridade in escolaridade%}
+<li>{{escolaridade.instituicao}}</li>
+<li>{{escolaridade.curso}}</li>
+<li>{{escolaridade.data_de_inicio}}</li>
+<li>{{escolaridade.data_de_termino}}</li>
+<li>{{escolaridade.obiservacao}}</li>
+{%endfor%}
+<h2>Experiência</h2>
+{%for experiencia in experiencia%}
+<li>{{experiencia.nome_de_empresa}}</li>
+<li>{{experiencia.cargo}}</li>
+<li>{{experiencia.data_de_inicio}}</li>
+<li>{{experiencia.data_de_saida}}</li>
+<li>{{experiencia.obiservacao}}</li>
+
+
+{%endfor%}
+

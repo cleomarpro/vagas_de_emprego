@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import(
-   Empregador
+   Vaga
 )
 
-admin.site.register(Empregador)
+admin.site.register(Vaga)

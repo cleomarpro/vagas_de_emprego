@@ -2,7 +2,10 @@ vagas cadastradas
 <p><a style=" color: #CD0000;" href="{% url 'logout'%}">Sair</a></p>
 <p><a style=" color: #1f00cd;" href="{% url 'criar_vaga'%}">Nova vaga</a></p>
 
-{%for categoria in Empregador %}
-    <p>{{ categoria.nome_da_vaga }}</p>
-    <p class="col_table">{{ categoria.faixa_salarial }}</p>
+{%for vagas in minhas_vagas %}
+    <li>{{ vagas.nome_da_vaga }} 
+        - {{ vagas.faixa_salarial }} 
+        - {{ vagas.escolaridade_minima }}
+    </li>
+    
 {%endfor%}

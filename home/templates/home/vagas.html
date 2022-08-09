@@ -1,0 +1,14 @@
+vagas
+{%if request.user.id%}
+<p><a href="{% url 'minhas_vagas' %}">Minhas vagas</a></p>
+
+<p><a href="{% url 'curriculo' request.user.id %}">Meu curriculo</a></p>
+{%endif%}
+{%for vagas in vagas %}
+    <li>{{ vagas.nome_da_vaga }} 
+        - {{ vagas.faixa_salarial }} 
+        - {{ vagas.escolaridade_minima }}
+        <a href="{% url 'candidato' vagas.id %}">Candidatar-se</a>
+    </li>
+    
+{%endfor%}

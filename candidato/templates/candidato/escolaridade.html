@@ -1,0 +1,58 @@
+<h1>Cadastro de usuário</h1>
+
+<!DOCTYPE html>
+
+<html lang= "pt-br" >
+<head >
+    <meta charcet="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> VieWorld  </title>
+
+    <meta charcet="UTF-8">
+    <meta name="cor" content="width=device-width,initial=scale=1">
+    <meta name="description" content="Rede SociL cor">
+   <!-- <meta name="keyWords" content="fluxo de caixa, gestão, controle de estoque"> -->
+    <meta name="author" content="cor">
+</head>
+<body>
+    
+
+    <div class='div_mae'>
+      
+        <form class='form_logim' method="post" >
+            {% csrf_token %}
+            <div>
+                <label>Instituição</label> <br>
+                    <input style='width:200px;' Type='text'
+                    maxlength="50"  name= 'instituicao'id= 'instituicao' required/>
+            </div>
+
+            <div>
+                <label>Curso</label> <br>
+                    <input style='width:200px;' Type='text'
+                    maxlength="30"  name= 'curso'id= 'curso' required/>
+            </div>
+            <div>
+                <label>Data de inicio</label> <br>
+                    <input style='width:200px;' Type='date'
+                        name= 'inicio'id= 'inicio' required/>
+            </div>
+            <div>
+                <label>Data de termino</label> <br>
+                    <input style='width:200px;' Type='date'
+                        name= 'data_de_termino'id= 'data_de_termino' required/>
+            </div>
+            <div>
+                <label>Observação</label> <br>
+                    <input style='width:200px;' Type='text'
+                    maxlength="200"  name= 'obiservacao'id= 'obiservacao' required/>
+            </div>
+                
+            <input id='bt_login' type="submit" value="Cadastre-se">
+            <br>
+            <br>
+            
+        </form>
+
+<body>
+</html>
