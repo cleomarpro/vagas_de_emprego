@@ -1,0 +1,8 @@
+<h3>Parabêns {{request.user.first_name}}, sua candidatura
+    foi realizada com sucesso para a vaga {{candidato.vaga.nome_da_vaga}}</h3>
+<h2>Dethales da vaga</h2>
+<li>{{candidato.vaga.nome_da_vaga}}</li>
+<li>{{candidato.vaga.faixa_salarial}}</li>
+<li>{{candidato.vaga.escolaridade_minima}}</li>
+
+<p><a href="{% url 'curriculo' request.user.id %}">Meu dados pessoais</a></p>

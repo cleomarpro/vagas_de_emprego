@@ -5,7 +5,8 @@ from .views import (
     EscolaridadeCreate, 
     ExperienciaCreate,
     CandidatoCreate,
-    Curriculo
+    Curriculo,
+    DetalhesVaga
 )
 
 urlpatterns = [
@@ -13,5 +14,6 @@ urlpatterns = [
     path('minhas_vagas/', MinhasVagas.as_view(), name='minhas_vagas'),
     path('escolaridade/<int:id>/', EscolaridadeCreate.as_view(), name='escolaridade'),
     path('experiencia/<int:id>/', ExperienciaCreate.as_view(), name='experiencia'),
-    path('candidato/<int:id>/', CandidatoCreate.as_view(), name='candidato')
+    path('candidato/<int:id>/', CandidatoCreate.as_view(), name='candidato'),
+    path('detalhes_da_vaga/<int:id>/', DetalhesVaga.as_view(), name='detalhes_da_vaga')
 ]

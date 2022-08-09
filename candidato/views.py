@@ -22,6 +22,13 @@ class MinhasVagas(View):
         return render(
             request, 'candidato/minhas_vagas.html', data)
 
+class DetalhesVaga(View):
+    def get(self, request, id):
+        data = {}
+        data['candidato'] = Candidato.objects.get(id = id)
+        return render(
+            request, 'candidato/detalhes_da_vaga.html', data)
+
 class Vagas(LoginRequiredMixin, View):
     def get(self, request):
         data = {}
@@ -92,4 +99,4 @@ class ExperienciaCreate(View):
             candidato_id = id
             )
         
-        return redirect('curriculo', id =id)
+        return redirect('detalhes_da_vaga', id =id)
