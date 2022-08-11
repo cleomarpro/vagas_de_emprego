@@ -5,12 +5,16 @@
     <hr> 
     <div>
         <label>Nome da vaga</label>
-        <input placeholder=" Nome da vaga..." type="text" id="nome_da_vaga" name="nome_da_vaga" required/>
+        <input placeholder=" Nome da vaga..." type="text" id="nome_da_vaga" 
+            name="nome_da_vaga" value="{{vaga.nome_da_vaga}}"  required/>
     </div>
     <div>
         <label>Faixa salarial</label> <br>
             <select  type="search" id="faixa_salarial" name="faixa_salarial" required/>
                 <tr>
+                    {% if vaga.faixa_salarial%}
+                        <option>{{vaga.faixa_salarial}}</option>
+                    {%endif%}
                     <option>Selecionar</option>
                     <option value='Até 1.000'> Até 1.000</option>
                     <option value='1000 a 2.0000'> 1000 a 2.0000</option>
@@ -23,6 +27,9 @@
         <label>Escolaridade minima</label> <br>
         <select  type="search" id="escolaridade_minima" name="escolaridade_minima" required/>
             <tr>
+                {% if vaga.faixa_salarial%}
+                    <option>{{vaga.escolaridade_minima}}</option>
+                {%endif%}
                 <option >Selecionar</option>
                 <option value='Ensino fundamental'> Ensino fundamental</option>
                 <option value='Ensino médio'> Ensino médio</option>

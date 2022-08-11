@@ -8,29 +8,34 @@
 
             <div>
                 <label>Nome da empresa</label> <br>
-                    <input style='width:200px;' Type='text'
-                    maxlength="50"  name= 'nome_de_empresa'id= 'nome_de_empresa' required/>
+                    <input style='width:200px;' Type='text' 
+                        value="{{experiencia.nome_da_empresa}}"
+                        maxlength="50"  name= 'nome_da_empresa'id= 'nome_da_empresa' required/>
             </div>
 
             <div>
                 <label>Cargo</label> <br>
                     <input style='width:200px;' Type='text'
-                    maxlength="30"  name= 'cargo'id= 'cargo' required/>
+                        value="{{experiencia.cargo}}"
+                        maxlength="30"  name= 'cargo'id= 'cargo' required/>
             </div>
             <div>
                 <label>Data de entrada</label> <br>
                     <input style='width:200px;' Type='date'
+                        value="{{experiencia.data_de_inicio  | date:'Y-m-d'}}"
                         name= 'data_de_inicio'id= 'data_de_inicio' required/>
             </div>
             <div>
                 <label>Data de saida</label> <br>
                     <input style='width:200px;' Type='date'
+                        value="{{experiencia.data_de_saida  | date:'Y-m-d'}}"
                         name= 'data_de_saida'id= 'data_de_saida' required/>
             </div>
             <div>
-                <label>Observação</label> <br>
+                <label>Obiservação</label> <br>
                     <input style='width:200px;' Type='text'
-                    maxlength="200"  name= 'obiservacao'id= 'obiservacao' required/>
+                        value="{{experiencia.obiservacao}}"
+                        maxlength="200"  name= 'obiservacao'id= 'obiservacao' required/>
             </div>
                 
             <input id='bt_login' type="submit" value="Cadastre-se">

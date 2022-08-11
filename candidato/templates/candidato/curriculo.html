@@ -1,9 +1,14 @@
-
+<p><a href="{% url 'vagas'%}">Voltar para vagas</a></p>
 <h2>Dados pessoais</h2>
-<li>{{request.user.first_name}} {{request.user.last_name}}</li>
+<li>{{dados_pessoais.nome}} {{dados_pessoais.segundo_nome}}</li>
+<li>{{dados_pessoais.email}}</li>
+<li>{{dados_pessoais.telefone}}</li>
+<p><a href="{% url 'dados_pessoais' dados_pessoais.id%}">Atualizar</a></p>
 
 <h2>Pretenção salarial</h2>
-<li>{{candidato.pretecao_salarial}}</li>
+<li>{{pretencao_salarial.pretencao_salarial}}</li>
+<p><a href="{% url 'pretencao_salarial'%}">Atualizar</a></p>
+
 <h2> Escolaridade</h2>
 {%for escolaridade in escolaridade%}
 <li>{{escolaridade.instituicao}}</li>
@@ -11,16 +16,20 @@
 <li>{{escolaridade.data_de_inicio}}</li>
 <li>{{escolaridade.data_de_termino}}</li>
 <li>{{escolaridade.obiservacao}}</li>
+<p><a href="{% url 'escolaridade_update' escolaridade.id %}">atualizar</a></p>
+<p><a href="{% url 'escolaridade_confirm_delete' escolaridade.id %}">Excluir</a></p>
 {%endfor%}
+<p><a href="{% url 'escolaridade_create' %}">adicionar</a></p>
 
 <h2>Experiência</h2>
 {%for experiencia in experiencia%}
-<li>{{experiencia.nome_de_empresa}}</li>
+<li>{{experiencia.nome_da_empresa}}</li>
 <li>{{experiencia.cargo}}</li>
 <li>{{experiencia.data_de_inicio}}</li>
 <li>{{experiencia.data_de_saida}}</li>
 <li>{{experiencia.obiservacao}}</li>
-
-
+<p><a href="{% url 'experiencia_update' experiencia.id%}">Atualizar</a></p>
+<p><a href="{% url 'experiencia_confirm_delete' experiencia.id%}">Excluir</a></p>
 {%endfor%}
+<p><a href="{% url 'experiencia_create'%}">Adicionar outro</a></p>
 

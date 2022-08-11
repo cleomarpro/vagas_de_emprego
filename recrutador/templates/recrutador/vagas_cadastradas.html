@@ -6,6 +6,8 @@ vagas cadastradas
     <li>{{ vagas.nome_da_vaga }} 
         - {{ vagas.faixa_salarial }} 
         - {{ vagas.escolaridade_minima }}
+        <p><a style=" color: #1f00cd;" href="{% url 'vaga_updade' vagas.id%}">Alterar</a></p>
+        <p><a style=" color: #1f00cd;" href="{% url 'confirm_delete' vagas.id%}">Excluir</a></p>
     </li>
     
 {%endfor%}

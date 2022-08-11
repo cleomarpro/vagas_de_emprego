@@ -4,32 +4,37 @@
             {% csrf_token %}
             <div>
                 <label>Instituição</label> <br>
-                    <input style='width:200px;' Type='text'
-                    maxlength="50"  name= 'instituicao'id= 'instituicao' required/>
+                    <input style='width:200px;' Type='text' 
+                        value="{{ escolaridade.instituicao }}"
+                        maxlength="50"  name= 'instituicao'id= 'instituicao' required/>
             </div>
 
             <div>
                 <label>Curso</label> <br>
                     <input style='width:200px;' Type='text'
-                    maxlength="30"  name= 'curso'id= 'curso' required/>
+                        value=" {{ escolaridade.curso }}"
+                        maxlength="30"  name= 'curso'id= 'curso' required/>
             </div>
             <div>
                 <label>Data de inicio</label> <br>
-                    <input style='width:200px;' Type='date'
+                    <input style='width:200px;' Type='date' 
+                        value="{{ escolaridade.data_de_inicio  | date:'Y-m-d'}}"
                         name= 'inicio'id= 'inicio' required/>
             </div>
             <div>
                 <label>Data de termino</label> <br>
                     <input style='width:200px;' Type='date'
+                        value="{{ escolaridade.data_de_termino  | date:'Y-m-d'}}"
                         name= 'data_de_termino'id= 'data_de_termino' required/>
             </div>
             <div>
                 <label>Observação</label> <br>
                     <input style='width:200px;' Type='text'
-                    maxlength="200"  name= 'obiservacao'id= 'obiservacao' required/>
+                        value="{{ escolaridade.obiservacao}}"
+                        maxlength="200"  name= 'obiservacao'id= 'obiservacao' required/>
             </div>
                 
-            <input id='bt_login' type="submit" value="Cadastre-se">
+            <input id='bt_login' type="submit" value="Atualizar">
             <br>
             <br>
             

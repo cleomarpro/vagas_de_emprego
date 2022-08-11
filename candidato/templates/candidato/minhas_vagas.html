@@ -3,4 +3,5 @@
 <p><a style=" color: #1f00cd;" href="{% url 'vagas'%}">Procurar vagas</a></p>
 {%for minhas_vaga in minhas_vagas%}
 <li>{{minhas_vaga.vaga.nome_da_vaga}}</li> 
+<a style=" color: #1f00cd;" href="{% url 'detalhes_da_vaga' minhas_vaga.id%}">Visualizar candidatura</a>
 {%endfor%}
