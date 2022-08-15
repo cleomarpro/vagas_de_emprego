@@ -1,0 +1,5 @@
+Candidatos
+{% for candidatos in candidatos%}
+<li>{{candidatos.dados_pessoais.nome}} {{candidatos.dados_pessoais.segundo_nome}} </li>
+<p><a href="{% url 'curriculo' candidatos.owner.id %}">Ver curriculo </a></p>
+{%endfor%}

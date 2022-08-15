@@ -1,0 +1,28 @@
+<p><a href="{% url 'vagas_cadastradas'%}">Voltar </a></p>
+<h2>Dados pessoais</h2>
+<li>{{dados_pessoais.nome}} {{dados_pessoais.segundo_nome}}</li>
+<li>{{dados_pessoais.email}}</li>
+<li>{{dados_pessoais.telefone}}</li>
+
+<h2>Pretenção salarial</h2>
+<li>{{pretencao_salarial.pretencao_salarial}}</li>
+
+<h2> Escolaridade</h2>
+{%for escolaridade in escolaridade%}
+<li>{{escolaridade.instituicao}}</li>
+<li>{{escolaridade.curso}}</li>
+<li>{{escolaridade.data_de_inicio}}</li>
+<li>{{escolaridade.data_de_termino}}</li>
+<li>{{escolaridade.obiservacao}}</li>
+{%endfor%}
+
+<h2>Experiência</h2>
+{%for experiencia in experiencia%}
+<li>{{experiencia.nome_da_empresa}}</li>
+<li>{{experiencia.cargo}}</li>
+<li>{{experiencia.data_de_inicio}}</li>
+<li>{{experiencia.data_de_saida}}</li>
+<li>{{experiencia.obiservacao}}</li>
+{%endfor%}
+
+

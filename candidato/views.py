@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from .models import Vaga
+from recrutador.models import Vaga
 import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
 from candidato.models import*
@@ -9,24 +9,25 @@ class Curriculo(View):
     def get(self, request):
         data = {}
         user_logado = request.user.id
-        data['pretencao_salarial'] = PretencaoSalarial.objects.get(owner = user_logado)
-        data['dados_pessoais'] = DadosPessoais.objects.get(owner = user_logado)
-        data['escolaridade'] = Escolaridade.objects.filter(owner = user_logado)
-        data['experiencia'] = Experiencia.objects.filter(owner = user_logado)
+        if PretencaoSalarial.objects.filter(owner_id = user_logado):
+            data['pretencao_salarial'] = PretencaoSalarial.objects.get(owner_id = user_logado)
+        data['dados_pessoais'] = DadosPessoais.objects.get(owner_id = user_logado)
+        data['escolaridade'] = Escolaridade.objects.filter(owner_id = user_logado)
+        data['experiencia'] = Experiencia.objects.filter(owner_id = user_logado)
         return render(
             request, 'candidato/curriculo.html', data)
 
 class MinhasVagas(View):
     def get(self, request):
         data = {}
-        data['minhas_vagas'] = MinhaIscricao.objects.filter(owner = request.user.id)
+        data['minhas_vagas'] = MinhaIscricao.objects.filter(owner_id = request.user.id)
         return render(
             request, 'candidato/minhas_vagas.html', data)
 
 class DetalhesVaga(View):
     def get(self, request, id):
         data = {}
-        data['dados_pessoais'] = DadosPessoais.objects.get(owner = request.user.id)
+        data['dados_pessoais'] = DadosPessoais.objects.get(owner_id = request.user.id)
         data['iscricao'] = MinhaIscricao.objects.get(id = id)
         return render(
             request, 'candidato/detalhes_da_vaga.html', data)
@@ -40,16 +41,14 @@ class Vagas(LoginRequiredMixin, View):
 
 class MinhaIscricaoCreate(LoginRequiredMixin, View):
     def get(self, request, id):
-        iscricao = MinhaIscricao.objects.filter(vaga_id=id)
-        if iscricao:
-            return redirect('vagas')
-        else:
-            user_logado = request.user.id
-            iscricao = MinhaIscricao.objects.create(
-                vaga_id = id,
-                owner = user_logado
-                )
-            return redirect('detalhes_da_vaga', id = iscricao.id)
+        user_logado = request.user.id
+        dados_pessoais = DadosPessoais.objects.get(owner_id=user_logado)
+        iscricao = MinhaIscricao.objects.create(
+            vaga_id = id,
+            dados_pessoais_id = dados_pessoais.id,
+            owner_id = user_logado
+            )
+        return redirect('detalhes_da_vaga', id = iscricao.id)
 
 def iscricao_delete (request, id):
     iscricao = MinhaIscricao.objects.filter(id = id) or None
@@ -80,7 +79,7 @@ class EscolaridadeCreate(View):
             data_de_inicio = inicio, 
             data_de_termino = data_de_termino,
             obiservacao = request.POST['obiservacao'],
-            owner = user_logado
+            owner_id = user_logado
             )
         return redirect('curriculo')
 
@@ -138,7 +137,7 @@ class ExperienciaCreate(View):
             data_de_inicio = data_de_inicio, 
             data_de_saida = data_de_saida,
             obiservacao = request.POST['obiservacao'],
-            owner = user_logado
+            owner_id = user_logado
             )
         return redirect('curriculo')
 
@@ -181,18 +180,19 @@ class PretencaoSalarialUpdate(View):
             request, 'candidato/pretencao_salarial.html')
     def post(self, request):
         user_logado = request.user.id
-        pretencao_salarial_id = PretencaoSalarial.objects.get(owner = user_logado)
-        pretencao_salarial_id = pretencao_salarial_id.id
+        pretencao_salarial_id = PretencaoSalarial.objects.filter(owner_id = user_logado)
         if pretencao_salarial_id:
+            pretencao_salarial_id = PretencaoSalarial.objects.get(owner_id = user_logado)
+            pretencao_salarial_id = pretencao_salarial_id.id
             pretencao_salarial = PretencaoSalarial.objects.get(id = pretencao_salarial_id)
             pretencao_salarial.id = pretencao_salarial_id
             pretencao_salarial.pretencao_salarial = request.POST['pretencao_salarial']
-            pretencao_salarial.owner = user_logado
+            pretencao_salarial.owner_id = user_logado
             pretencao_salarial.save()
         else:
             pretencao_salarial = PretencaoSalarial.objects.create(
                 pretencao_salarial = request.POST['pretencao_salarial'],
-                owner = user_logado
+                owner_id = user_logado
             )
         return redirect('curriculo')
 

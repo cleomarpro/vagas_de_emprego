@@ -2,12 +2,23 @@ vagas cadastradas
 <p><a style=" color: #CD0000;" href="{% url 'logout'%}">Sair</a></p>
 <p><a style=" color: #1f00cd;" href="{% url 'criar_vaga'%}">Nova vaga</a></p>
 
-{%for vagas in minhas_vagas %}
-    <li>{{ vagas.nome_da_vaga }} 
-        - {{ vagas.faixa_salarial }} 
-        - {{ vagas.escolaridade_minima }}
+{%for vagas in total_candidatos %}
+    <li>{{ vagas.nome_da_vaga }} <br>
+        -Faicha salarial  {{ vagas.faixa_salarial }} <br>
+        - {{ vagas.escolaridade_minima }} <br>
+        - {{ vagas.data_hora}} <br>
+        - Candidatos {{ vagas.count }} <br>
+
+        <p><a style=" color: #1f00cd;" href="{% url 'candidatos' vagas.id%}">Ver candidatos</a></p>
         <p><a style=" color: #1f00cd;" href="{% url 'vaga_updade' vagas.id%}">Alterar</a></p>
         <p><a style=" color: #1f00cd;" href="{% url 'confirm_delete' vagas.id%}">Excluir</a></p>
     </li>
+    
+{%endfor%}
+
+
+
+{%for candidatos in total_candidatos %}
+    <li>total de candidatos: {{candidatos.escolaridade_minima}}</li>
     
 {%endfor%}
