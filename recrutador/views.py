@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.db.models.aggregates import Count
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from .models import Vaga
 from django.conf import settings
 from candidato.models import*
@@ -86,6 +87,7 @@ class VagaUpdate(LoginRequiredMixin, View):
         vaga.save()
         return redirect('vagas_cadastradas')
 
+@login_required()
 def vaga_delete (request, id):
     user = request.user.has_perm('recrutador.delete_vaga')
     if user == False:

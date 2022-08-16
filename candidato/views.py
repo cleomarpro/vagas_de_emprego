@@ -3,6 +3,7 @@ from django.views import View
 from recrutador.models import Vaga
 import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from candidato.models import*
 
 class Curriculo(View):
@@ -17,14 +18,14 @@ class Curriculo(View):
         return render(
             request, 'candidato/curriculo.html', data)
 
-class MinhasVagas(View):
+class MinhasVagas(LoginRequiredMixin, View):
     def get(self, request):
         data = {}
         data['minhas_vagas'] = MinhaIscricao.objects.filter(owner_id = request.user.id)
         return render(
             request, 'candidato/minhas_vagas.html', data)
 
-class DetalhesVaga(View):
+class DetalhesVaga(LoginRequiredMixin, View):
     def get(self, request, id):
         data = {}
         data['dados_pessoais'] = DadosPessoais.objects.get(owner_id = request.user.id)
@@ -54,6 +55,7 @@ class MinhaIscricaoCreate(LoginRequiredMixin, View):
                 )
             return redirect('detalhes_da_vaga', id = iscricao.id)
 
+@login_required()
 def iscricao_delete (request, id):
     iscricao = MinhaIscricao.objects.filter(id = id) or None
     if request.method == 'POST':
@@ -63,7 +65,7 @@ def iscricao_delete (request, id):
         return  render(
             request, 'candidato/confirm_delete.html')
 
-class EscolaridadeCreate(View):
+class EscolaridadeCreate(LoginRequiredMixin, View):
     def get(self, request):    
         return render(
             request, 'candidato/escolaridade.html')
@@ -88,7 +90,7 @@ class EscolaridadeCreate(View):
         return redirect('curriculo')
 
 
-class EscolaridadeUpdate(View):
+class EscolaridadeUpdate( LoginRequiredMixin, View):
     def get(self, request, id):
         data = {}
         data['escolaridade'] = Escolaridade.objects.get(id = id)
@@ -113,6 +115,7 @@ class EscolaridadeUpdate(View):
         escolaridade.save()
         return redirect('curriculo')
 
+@login_required()
 def escolaridade_delete (request, id):
     escolaridade = Escolaridade.objects.get(id = id) or None
     if request.method == 'POST':
@@ -122,7 +125,7 @@ def escolaridade_delete (request, id):
         return  render(
             request, 'candidato/confirm_delete.html')
 
-class ExperienciaCreate(View):
+class ExperienciaCreate(LoginRequiredMixin, View):
     def get(self, request):
         return render(
             request, 'candidato/experiencia.html')
@@ -145,7 +148,7 @@ class ExperienciaCreate(View):
             )
         return redirect('curriculo')
 
-class ExperienciaUpdate(View):
+class ExperienciaUpdate(LoginRequiredMixin, View):
     def get(self, request, id):
         data = {}
         data['experiencia'] = Experiencia.objects.get(id = id)
@@ -169,6 +172,7 @@ class ExperienciaUpdate(View):
         experiencia.save()
         return redirect('curriculo')
 
+@login_required()
 def experiencia_delete (request, id):
     experiencia = Experiencia.objects.get(id = id) or None
     if request.method == 'POST':
@@ -178,7 +182,7 @@ def experiencia_delete (request, id):
         return  render(
             request, 'candidato/confirm_delete.html')
 
-class PretencaoSalarialUpdate(View):
+class PretencaoSalarialUpdate(LoginRequiredMixin, View):
     def get(self, request):
         return render(
             request, 'candidato/pretencao_salarial.html')
@@ -200,7 +204,7 @@ class PretencaoSalarialUpdate(View):
             )
         return redirect('curriculo')
 
-class DadosPessoaisUpdate(View):
+class DadosPessoaisUpdate(LoginRequiredMixin, View):
     def get(self, request, id):
         data = {}
         data['dados_pessoais'] = DadosPessoais.objects.get(id=id)
