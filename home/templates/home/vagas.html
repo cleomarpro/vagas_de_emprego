@@ -10,7 +10,7 @@
     <title>  Vagas de emprego  </title>
     
     <script type="module" src="{% static 'js/mascaras.js' %}"></script>
-    <link rel="stylesheet" href= "{% static '/style/home.css'%}">
+    <link rel="stylesheet" href= "{% static '/style/vagas.css'%}">
     
     <meta charcet="UTF-8">
     <meta name="cor" content="width=device-width,initial=scale=1">
@@ -19,20 +19,29 @@
     <meta name="author" content="cor">
 
 </head>
+<body>
     {%if request.user.id%}
-    <p><a href="{% url 'minhas_vagas' %}">Minhas vagas</a></p>
-
-    <p><a href="{% url 'curriculo' %}">Meu curriculo</a></p>
+    <label class="bt_label"><a href="{% url 'minhas_vagas' %}">Minhas vagas</a></label>
+    <label class="bt_label" style="color: red;"><a href="{% url 'logout' %}">Sair</a></label>
+    <label class="bt_label"><a href="{% url 'curriculo' %}">Meu curriculo</a></label>
     {%endif%}
     {%if not request.user.id %}
-    <p><a href="{% url 'candidato_novo' %}">Cadastras-se</a></p>
-    <p><a href="{% url 'login' %}">login</a></p>
+    <label class="bt_label"><a href="{% url 'candidato_novo' %}">Cadastras-se</a></label>
+    <label class="bt_label"><a href="{% url 'login' %}">login</a></label>
     {%endif%}
     {%for vagas in vagas %}
-        <li>{{ vagas.nome_da_vaga }} 
-            - {{ vagas.faixa_salarial }} 
-            - {{ vagas.escolaridade_minima }}
-            <a href="{% url 'candidato' vagas.id %}">Candidatar-se </a>
-        </li>
+    <hr>
+    <br>
+    <h3 id="titulo_vaga">{{ vagas.nome_da_vaga }} </h3>
+    <ul class="ul_vaga">
+        <li>  <b>Faixa salarial:</b> {{ vagas.faixa_salarial }} </li> <br>
+        <li>  <b>Escolaridade minima:</b>  {{ vagas.escolaridade_minima }} </li> <br>
+        <li>  <b>Postado em:</b>  {{ vagas.data_hora }} </li> <br>
+    </ul>
+        
+            <label class='link_label'>  <a href="{% url 'candidato' vagas.id %}">
+                Candidatar-se </a> </label> <br>
         
     {%endfor%}
+</body>
+</html>

@@ -1,35 +1,68 @@
-<p><a href="{% url 'vagas'%}">Voltar para vagas</a></p>
-<h2>Dados pessoais</h2>
-<li>{{dados_pessoais.nome}} {{dados_pessoais.segundo_nome}}</li>
-<li>{{dados_pessoais.email}}</li>
-<li>{{dados_pessoais.telefone}}</li>
-<p><a href="{% url 'dados_pessoais' dados_pessoais.id%}">Atualizar</a></p>
 
-<h2>Pretenção salarial</h2>
-<li>{{pretencao_salarial.pretencao_salarial}}</li>
-<p><a href="{% url 'pretencao_salarial'%}">Atualizar</a></p>
+{% load static%}
+<!DOCTYPE html>
 
-<h2> Escolaridade</h2>
-{%for escolaridade in escolaridade%}
-<li>{{escolaridade.instituicao}}</li>
-<li>{{escolaridade.curso}}</li>
-<li>{{escolaridade.data_de_inicio}}</li>
-<li>{{escolaridade.data_de_termino}}</li>
-<li>{{escolaridade.obiservacao}}</li>
-<p><a href="{% url 'escolaridade_update' escolaridade.id %}">atualizar</a></p>
-<p><a href="{% url 'escolaridade_confirm_delete' escolaridade.id %}">Excluir</a></p>
-{%endfor%}
-<p><a href="{% url 'escolaridade_create' %}">adicionar</a></p>
+<html lang= "pt-br" >
+<head>
 
-<h2>Experiência</h2>
-{%for experiencia in experiencia%}
-<li>{{experiencia.nome_da_empresa}}</li>
-<li>{{experiencia.cargo}}</li>
-<li>{{experiencia.data_de_inicio}}</li>
-<li>{{experiencia.data_de_saida}}</li>
-<li>{{experiencia.obiservacao}}</li>
-<p><a href="{% url 'experiencia_update' experiencia.id%}">Atualizar</a></p>
-<p><a href="{% url 'experiencia_confirm_delete' experiencia.id%}">Excluir</a></p>
-{%endfor%}
-<p><a href="{% url 'experiencia_create'%}">Adicionar outro</a></p>
+    <meta charcet="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel = "icon" type = "image/png" href = "{% static 'img/v.png' %}"/>
+    <title>  Vagas de emprego  </title>
+    
+    <script type="module" src="{% static 'js/mascaras.js' %}"></script>
+    <link rel="stylesheet" href= "{% static '/style/curriculo.css'%}">
+    
+    <meta charcet="UTF-8">
+    <meta name="cor" content="width=device-width,initial=scale=1">
+    <meta name="description" content="Vagas de emprego">
+    <meta name="keyWords" content="Vagas de emprego, emprego, vagas"> 
+    <meta name="author" content="cor">
 
+    </head>
+    <label class='bt_label'> <a href="{% url 'vagas'%}">Voltar para vagas</a></label>
+    <hr>
+    <label class="titulo_curriculo">Dados pessoais</label>
+        <ul class='ul_curriculo'> 
+            <li> <b>Nome:</b>{{dados_pessoais.nome}} {{dados_pessoais.segundo_nome}}</li> <br>
+            <li><b>E-mail:</b>{{dados_pessoais.email}}</li><br>
+            <li><b>Telefone:</b>{{dados_pessoais.telefone}}</li><br>
+        </ul>
+        <label class="link_label"><a href="{% url 'dados_pessoais' dados_pessoais.id%}">Atualizar</a></label>
+    <hr>
+    <label class="titulo_curriculo">Pretenção salarial</label>
+        <ul class='ul_curriculo'> 
+            <li><b>Pretenção salarial:</b>{{pretencao_salarial.pretencao_salarial}}</li> <br>
+        </ul>
+        <label class="link_label"><a href="{% url 'pretencao_salarial'%}">Atualizar</a></label>
+    <hr>
+    <label class="titulo_curriculo"> Escolaridade</label>
+        {%for escolaridade in escolaridade%}
+        <ul class='ul_curriculo'> 
+            <li><b>Instituição:</b>{{escolaridade.instituicao}}</li><br>
+            <li><b>Formação:</b>{{escolaridade.curso}}</li><br>
+            <li><b>Início:</b>{{escolaridade.data_de_inicio}}</li><br>
+            <li><b>Termino:</b>{{escolaridade.data_de_termino}}</li><br>
+            <li><b>Obiservação:</b>{{escolaridade.obiservacao}}</li><br>
+        </ul>
+        <label class="link_label"><a href="{% url 'escolaridade_update' escolaridade.id %}">atualizar</a></label>
+        <label class="link_label"><a href="{% url 'escolaridade_confirm_delete' escolaridade.id %}">Excluir</a></label>
+        {%endfor%}
+        <label class="link_label"><a href="{% url 'escolaridade_create' %}">adicionar</a></label>
+    <hr>
+    <label class="titulo_curriculo">Experiência</label>
+        {%for experiencia in experiencia%}
+        <ul class='ul_curriculo'> 
+            <li><b>Empresa:</b>{{experiencia.nome_da_empresa}}</li><br>
+            <li><b>Cargo:</b>{{experiencia.cargo}}</li><br>
+            <li><b>Inicio:</b>{{experiencia.data_de_inicio}}</li><br>
+            <li><b>Até:</b>{{experiencia.data_de_saida}}</li><br>
+            <li><b>Obiservação:</b>{{experiencia.obiservacao}}</li><br>
+        </ul>
+        <label class="link_label"><a href="{% url 'experiencia_update' experiencia.id%}">Atualizar</a></label>
+        <label class="link_label"><a href="{% url 'experiencia_confirm_delete' experiencia.id%}">Excluir</a></label>
+        {%endfor%}
+        <label class="link_label"><a href="{% url 'experiencia_create'%}">Adicionar outro</a></label>
+
+<body>
+</html>

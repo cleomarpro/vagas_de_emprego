@@ -42,13 +42,17 @@ class Vagas(LoginRequiredMixin, View):
 class MinhaIscricaoCreate(LoginRequiredMixin, View):
     def get(self, request, id):
         user_logado = request.user.id
-        dados_pessoais = DadosPessoais.objects.get(owner_id=user_logado)
-        iscricao = MinhaIscricao.objects.create(
-            vaga_id = id,
-            dados_pessoais_id = dados_pessoais.id,
-            owner_id = user_logado
-            )
-        return redirect('detalhes_da_vaga', id = iscricao.id)
+        vaga = MinhaIscricao.objects.filter(owner_id = user_logado, vaga_id = id)
+        if vaga:
+            return redirect('minhas_vagas')
+        else:
+            dados_pessoais = DadosPessoais.objects.get(owner_id=user_logado)
+            iscricao = MinhaIscricao.objects.create(
+                vaga_id = id,
+                dados_pessoais_id = dados_pessoais.id,
+                owner_id = user_logado
+                )
+            return redirect('detalhes_da_vaga', id = iscricao.id)
 
 def iscricao_delete (request, id):
     iscricao = MinhaIscricao.objects.filter(id = id) or None

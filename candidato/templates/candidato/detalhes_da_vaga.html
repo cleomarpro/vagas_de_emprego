@@ -1,9 +1,41 @@
-<h3>Parabêns {{dados_pessoais.nome}}, sua candidatura
-    foi realizada com sucesso para a vaga {{iscricao.vaga.nome_da_vaga}}</h3>
-<h2>Dethales da vaga</h2>
-<li>{{iscricao.vaga.nome_da_vaga}}</li>
-<li>{{iscricao.vaga.faixa_salarial}}</li>
-<li>{{iscricao.vaga.escolaridade_minima}}</li>
+{% load static%}
+<!DOCTYPE html>
 
-<p><a href="{% url 'curriculo'%}">Atualizar currículo</a></p>
-<p><a href="{% url 'iscricao_confirm_delete' iscricao.id %}">Cancelar candidatura</a></p>
+<html lang= "pt-br" > 
+<head>
+
+    <meta charcet="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel = "icon" type = "image/png" href = "{% static 'img/v.png' %}"/>
+    <title>  Vagas de emprego  </title>
+    
+    <script type="module" src="{% static 'js/mascaras.js' %}"></script>
+    <link rel="stylesheet" href= "{% static '/style/vagas.css'%}">
+    
+    <meta charcet="UTF-8">
+    <meta name="cor" content="width=device-width,initial=scale=1">
+    <meta name="description" content="Vagas de emprego">
+    <meta name="keyWords" content="Vagas de emprego, emprego, vagas">
+    <meta name="author" content="cor">
+
+</head>
+<body>
+    <label class="bt_label"><a href="{% url 'minhas_vagas' %}">Minhas vagas</a></label>
+    <hr>
+    <p>
+        Parabêns {{dados_pessoais.nome}}, sua candidatura
+        foi realizada, para continuar, clique em <b>Atualizar currículo
+    </p>
+    <h3>Dethales da vaga</h3>
+    <h3 id="titulo_vaga">{{iscricao.vaga.nome_da_vaga}}</h3>
+    <ul class='ul_vaga'>
+        <li><b>Faixa salarial:</b>{{iscricao.vaga.faixa_salarial}}</li> <br>
+        <li> <b>Escolaridade minima:</b>{{iscricao.vaga.escolaridade_minima}}</li> <br>
+    </ul >
+    <hr>
+    <label class="link_label"><a href="{% url 'curriculo'%}">
+        Atualizar currículo</a></label>
+    <label class="link_label"><a href="{% url 'iscricao_confirm_delete' iscricao.id %}">
+        Cancelar candidatura</a></label>
+</body>
+</html>
