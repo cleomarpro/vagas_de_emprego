@@ -24,8 +24,8 @@ class CandidatoUserCreate( View):
                 username= request.POST['email'],
             )
             dados_pessoais = DadosPessoais.objects.create(
-                nome = request.POST['nome'],
-                segundo_nome = request.POST['segundo_nome'],
+                nome = request.POST['first_name'],
+                segundo_nome = request.POST['last_name'],
                 email = request.POST['email'],
                 owner_id = usuario.id
                 )

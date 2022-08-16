@@ -1,0 +1,61 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Montaga&display=swap');
+@import url('https://fonts.googleapis.com/css2? família=David+Libre&família=Montaga&família=Poppins:wght@300&família=Fonte+Sans+Pro&display=swap');
+
+.div_mae{
+    margin-top:75px;
+}
+.errorlist{
+    color: red;
+}
+#roda_pe{
+    margin-top: 30px;
+}
+.home{
+   
+    width:450px;
+    background-color:#60778a;
+    color: white;
+    border: 1px solid #f5f5f0;
+    border-radius: 7px;
+    margin-left:25%;
+    margin-top: 110px;
+    padding: 20px;
+
+}
+.home div{
+    background-color: #60778a;
+    display: flex;
+    text-align: center;
+    padding: 10px;
+    width:90%;
+        
+}
+@media (max-width: 768px) {
+    .home{
+    width:100%;
+    margin:0px;
+}
+}
+
+
+.home div label{
+    text-align: center;
+    width:90%;
+    background-color:#e6dddd;
+    margin:2px;
+    border: 1px solid #a9aeae;
+    border-radius: 5px;
+    padding: 1px;
+    
+}
+
+#bt_label a{
+    text-decoration: none;
+    color:rgb(2, 2, 9);
+    font-size: 20px;
+}
+
+
+
+

@@ -1,0 +1,80 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Montaga&display=swap');
+@import url('https://fonts.googleapis.com/css2? família=David+Libre&família=Montaga&família=Poppins:wght@300&família=Fonte+Sans+Pro&display=swap');
+
+.div_mae{
+    margin-top:75px;
+}
+.errorlist{
+    color: red;
+}
+#roda_pe{
+    margin-top: 30px;
+}
+.novo_usuario{
+    width:450px;
+    background-color:#60778a;
+    color: white;
+    border: 1px solid #f5f5f0;
+    border-radius: 7px;
+    margin-left:25%;
+    padding: 8px;
+
+}
+
+@media (max-width: 768px) {
+    .novo_usuario{
+    width:100%;
+    margin:0px;
+}
+}
+#password{
+    width: 91%;
+    font-size: 18px;
+    border: 1px solid #f5f5f0;
+    border-radius: 5px;
+    text-align: left;
+    padding: 5px;
+}
+#email{
+    width: 91%;
+    font-size: 18px;
+    border: 1px solid #f5f5f0;
+    border-radius: 5px;
+    text-align: left;
+    padding: 5px;
+}
+#first_name{
+    width: 91%;
+    font-size: 18px;
+    border: 1px solid #f5f5f0;
+    border-radius: 5px;
+    text-align: left;
+    padding: 5px;
+}
+
+#last_name{
+    width: 91%;
+    font-size: 18px;
+    border: 1px solid #f5f5f0;
+    border-radius: 5px;
+    text-align: left;
+    padding: 5px;
+}
+
+#bt_cadastrar{
+    text-align: center;
+    width:70%;
+    background-color:#e6dddd;
+    color:rgb(4, 9, 98);
+    margin:5px;
+    font-size: 16px;
+    border: 1px solid #a9aeae;
+    border-radius: 5px;
+}
+
+
+
+
+
+

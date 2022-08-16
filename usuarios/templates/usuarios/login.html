@@ -2,24 +2,23 @@
 <!DOCTYPE html>
 
 <html lang= "pt-br" >
-<head >
-    <meta charcet="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel = "icon" type = "image/png" href = "{% static 'img/v.png' %}"/>
-    <title> ?  </title>
+    <head>
 
-    <script type="module" src="{% static 'js/mascaras.js' %}"></script>
-    <link rel="stylesheet" href= "{% static 'Style/home.css'%}">
-
-    <meta charcet="UTF-8">
-    <meta name="cor" content="width=device-width,initial=scale=1">
-    <meta name="description" content="Rede SociL cor">
-   <meta name="keyWords" content="emprego"> 
-    <meta name="author" content="cor">
-</head>
-<body>
-   
-
+        <meta charcet="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel = "icon" type = "image/png" href = "{% static 'img/v.png' %}"/>
+        <title>  Vagas de emprego  </title>
+        
+        <script type="module" src="{% static 'js/mascaras.js' %}"></script>
+        <link rel="stylesheet" href= "{% static '/style/login.css'%}">
+        
+        <meta charcet="UTF-8">
+        <meta name="cor" content="width=device-width,initial=scale=1">
+        <meta name="description" content="Vagas de emprego">
+        <meta name="keyWords" content="Vagas de emprego, emprego, vagas">
+        <meta name="author" content="cor">
+    
+    </head>
     <div class='div_mae'>
         
         
@@ -32,14 +31,7 @@
             {% endif %}
 
             {% if next %}
-
-            {% if user.is_authenticated %}
-                <p style='color: red;' > Você está sem permissão de acesso, por favor,
-                entre com um usuário autorizado ou  consulte o seu administrador!</p>
-            {% else %}
-
-                <p style='color: red;'>É necessário fazer login para acessar essa página!</p>
-            {% endif %}
+                <p style='color: red;'>Para continuar é necessário fazer login!</p>
             {% endif %}
             
                 <hr>

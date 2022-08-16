@@ -1,24 +1,47 @@
-vagas cadastradas
-<p><a style=" color: #CD0000;" href="{% url 'logout'%}">Sair</a></p>
-<p><a style=" color: #1f00cd;" href="{% url 'criar_vaga'%}">Nova vaga</a></p>
+{% load static%}
+<!DOCTYPE html>
 
-{%for vagas in total_candidatos %}
-    <li>{{ vagas.nome_da_vaga }} <br>
-        -Faicha salarial  {{ vagas.faixa_salarial }} <br>
-        - {{ vagas.escolaridade_minima }} <br>
-        - {{ vagas.data_hora}} <br>
-        - Candidatos {{ vagas.count }} <br>
+<html lang= "pt-br" >
+<head> 
 
-        <p><a style=" color: #1f00cd;" href="{% url 'candidatos' vagas.id%}">Ver candidatos</a></p>
-        <p><a style=" color: #1f00cd;" href="{% url 'vaga_updade' vagas.id%}">Alterar</a></p>
-        <p><a style=" color: #1f00cd;" href="{% url 'confirm_delete' vagas.id%}">Excluir</a></p>
-    </li>
+    <meta charcet="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel = "icon" type = "image/png" href = "{% static 'img/v.png' %}"/>
+    <title>  Vagas de emprego  </title>
     
-{%endfor%}
-
-
-
-{%for candidatos in total_candidatos %}
-    <li>total de candidatos: {{candidatos.escolaridade_minima}}</li>
+    <script type="module" src="{% static 'js/mascaras.js' %}"></script>
+    <link rel="stylesheet" href= "{% static '/style/vagas.css'%}">
     
-{%endfor%}
+    <meta charcet="UTF-8">
+    <meta name="cor" content="width=device-width,initial=scale=1">
+    <meta name="description" content="Vagas de emprego">
+    <meta name="keyWords" content="Vagas de emprego, emprego, vagas">
+    <meta name="author" content="cor">
+
+    </head>
+
+        <label class='bt_label'> <a style="color: red" href="{% url 'logout'%}">Sair</a></label>
+        <label class='bt_label'> <a  href="{% url 'home'%}">Home</a></label>
+        <label class='bt_label'> <a  href="{% url 'criar_vaga'%}">Nova vaga</a></label>
+        <hr>
+        {%for vagas in total_candidatos %}
+       
+        <h3 id="titulo_vaga"> {{ vagas.nome_da_vaga }} <h3> 
+        <ul class="ul_vaga"> 
+            </li> <b> Faixa salarial: </b> <span>{{ vagas.faixa_salarial }}</span></li> <br>
+            </li> <b>Escolaridade mínima:</b>  {{ vagas.escolaridade_minima }}</li> <br>
+            </li> <b>Número de candidatos:</b>  {{ vagas.count }}</li> <br>
+            </li> <b>Postada em:</b> {{ vagas.data_hora}}</li>  <br>  
+        </ul>
+        <br>
+            <label class='link_label'> <a   href="{% url 'candidatos' vagas.id%}">Ver candidatos</a></label>
+            <label class='link_label'> <a  href="{% url 'vaga_updade' vagas.id%}">Alterar</a></label>
+            <label class='link_label'> <a  href="{% url 'confirm_delete' vagas.id%}"> Excluir</a></label>
+      
+        <hr> 
+        {%endfor%}
+
+<body>
+</html>
+
+

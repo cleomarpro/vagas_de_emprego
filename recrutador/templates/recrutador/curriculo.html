@@ -1,28 +1,61 @@
-<p><a href="{% url 'vagas_cadastradas'%}">Voltar </a></p>
-<h2>Dados pessoais</h2>
-<li>{{dados_pessoais.nome}} {{dados_pessoais.segundo_nome}}</li>
-<li>{{dados_pessoais.email}}</li>
-<li>{{dados_pessoais.telefone}}</li>
+{% load static%}
+<!DOCTYPE html>
 
-<h2>Pretenção salarial</h2>
-<li>{{pretencao_salarial.pretencao_salarial}}</li>
+<html lang= "pt-br" >
+<head>
 
-<h2> Escolaridade</h2>
-{%for escolaridade in escolaridade%}
-<li>{{escolaridade.instituicao}}</li>
-<li>{{escolaridade.curso}}</li>
-<li>{{escolaridade.data_de_inicio}}</li>
-<li>{{escolaridade.data_de_termino}}</li>
-<li>{{escolaridade.obiservacao}}</li>
-{%endfor%}
+    <meta charcet="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel = "icon" type = "image/png" href = "{% static 'img/v.png' %}"/>
+    <title>  Vagas de emprego  </title>
+    
+    <script type="module" src="{% static 'js/mascaras.js' %}"></script>
+    <link rel="stylesheet" href= "{% static '/style/curriculo.css'%}">
+    
+    <meta charcet="UTF-8">
+    <meta name="cor" content="width=device-width,initial=scale=1">
+    <meta name="description" content="Vagas de emprego">
+    <meta name="keyWords" content="Vagas de emprego, emprego, vagas">
+    <meta name="author" content="cor">
 
-<h2>Experiência</h2>
-{%for experiencia in experiencia%}
-<li>{{experiencia.nome_da_empresa}}</li>
-<li>{{experiencia.cargo}}</li>
-<li>{{experiencia.data_de_inicio}}</li>
-<li>{{experiencia.data_de_saida}}</li>
-<li>{{experiencia.obiservacao}}</li>
-{%endfor%}
+    </head>
+</div>
+    <label class='bt_label'> <a style="color: red" href="{% url 'logout'%}">Sair</a></label>
+    <label class="bt_label"><a href="{% url 'vagas_cadastradas'%}">Minhas Vagas </a></label>
+    <label class='bt_label'> <a  href="{% url 'home'%}">Home</a></label>
+    <hr>
+    <label class="titulo_curriculo">Dados pessoais</label>
+    <ul class='ul_curriculo'>
+        <li>{{dados_pessoais.nome}} {{dados_pessoais.segundo_nome}}</li>
+        <li>{{dados_pessoais.email}}</li>
+        <li>{{dados_pessoais.telefone}}</li>
+    </ul>>
+    <label class="titulo_curriculo">Pretenção salarial</label>
+    <ul>
+        <li>{{pretencao_salarial.pretencao_salarial}}</li><br>
+    </ul>
+    <label class="titulo_curriculo"> Escolaridade</label><br>
+    {%for escolaridade in escolaridade%}
+    <ul class='ul_curriculo'> 
+        <li>{{escolaridade.instituicao}}</li><br>
+        <li>{{escolaridade.curso}}</li><br>
+        <li>{{escolaridade.data_de_inicio}}</li><br>
+        <li>{{escolaridade.data_de_termino}}</li><br>
+        <li>{{escolaridade.obiservacao}}</li><br>
+    </ul>
+    {%endfor%}
 
+    <label class="titulo_curriculo">Experiência</label>
+    {%for experiencia in experiencia%}
+    <ul class='ul_curriculo'>
+        <li>{{experiencia.nome_da_empresa}}</li><br>
+        <li>{{experiencia.cargo}}</li><br>
+        <li>{{experiencia.data_de_inicio}}</li><br>
+        <li>{{experiencia.data_de_saida}}</li><br>
+        <li>{{experiencia.obiservacao}}</li><br>
+    </ul>
+    {%endfor%}
+</div>
+<body>
+</html>
 

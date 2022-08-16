@@ -1,18 +1,38 @@
-vagas
-{%if request.user.id%}
-<p><a href="{% url 'minhas_vagas' %}">Minhas vagas</a></p>
+{% load static%}
+<!DOCTYPE html>
 
-<p><a href="{% url 'curriculo' %}">Meu curriculo</a></p>
-{%endif%}
-{%if not request.user.id %}
-<p><a href="{% url 'candidato_novo' %}">Cadastras-se</a></p>
-<p><a href="{% url 'login' %}">login</a></p>
-{%endif%}
-{%for vagas in vagas %}
-    <li>{{ vagas.nome_da_vaga }} 
-        - {{ vagas.faixa_salarial }} 
-        - {{ vagas.escolaridade_minima }}
-        <a href="{% url 'candidato' vagas.id %}">Candidatar-se </a>
-    </li>
+<html lang= "pt-br" > 
+<head>
+
+    <meta charcet="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel = "icon" type = "image/png" href = "{% static 'img/v.png' %}"/>
+    <title>  Vagas de emprego  </title>
     
-{%endfor%}
+    <script type="module" src="{% static 'js/mascaras.js' %}"></script>
+    <link rel="stylesheet" href= "{% static '/style/home.css'%}">
+    
+    <meta charcet="UTF-8">
+    <meta name="cor" content="width=device-width,initial=scale=1">
+    <meta name="description" content="Vagas de emprego">
+    <meta name="keyWords" content="Vagas de emprego, emprego, vagas">
+    <meta name="author" content="cor">
+
+</head>
+    {%if request.user.id%}
+    <p><a href="{% url 'minhas_vagas' %}">Minhas vagas</a></p>
+
+    <p><a href="{% url 'curriculo' %}">Meu curriculo</a></p>
+    {%endif%}
+    {%if not request.user.id %}
+    <p><a href="{% url 'candidato_novo' %}">Cadastras-se</a></p>
+    <p><a href="{% url 'login' %}">login</a></p>
+    {%endif%}
+    {%for vagas in vagas %}
+        <li>{{ vagas.nome_da_vaga }} 
+            - {{ vagas.faixa_salarial }} 
+            - {{ vagas.escolaridade_minima }}
+            <a href="{% url 'candidato' vagas.id %}">Candidatar-se </a>
+        </li>
+        
+    {%endfor%}

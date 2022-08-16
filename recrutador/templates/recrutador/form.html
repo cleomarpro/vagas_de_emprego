@@ -1,6 +1,27 @@
-<p>Anuciar nova vaga</p>
+{% load static%}
+<!DOCTYPE html>
 
-<form id="form_up" class='formulario'  method="POST" >
+<html lang= "pt-br" >
+<head>
+
+    <meta charcet="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel = "icon" type = "image/png" href = "{% static 'img/v.png' %}"/>
+    <title>  Vagas de emprego  </title>
+    
+    <script type="module" src="{% static 'js/mascaras.js' %}"></script>
+    <link rel="stylesheet" href= "{% static '/style/nova_vaga.css'%}">
+    
+    <meta charcet="UTF-8">
+    <meta name="cor" content="width=device-width,initial=scale=1">
+    <meta name="description" content="Vagas de emprego">
+    <meta name="keyWords" content="Vagas de emprego, emprego, vagas">
+    <meta name="author" content="cor">
+
+    </head>
+
+<form class="form_nova_vaga" class='formulario'  method="POST" >
+    <P  style="color:black; font-size: 25px;">Nova vaga</P>
     {% csrf_token %}
     <hr> 
     <div>
@@ -8,6 +29,7 @@
         <input placeholder=" Nome da vaga..." type="text" id="nome_da_vaga" 
             name="nome_da_vaga" value="{{vaga.nome_da_vaga}}"  required/>
     </div>
+    <br>
     <div>
         <label>Faixa salarial</label> <br>
             <select  type="search" id="faixa_salarial" name="faixa_salarial" required/>
@@ -23,6 +45,7 @@
                 </tr>
             </select>
     </div> 
+    <br>
     <div>
         <label>Escolaridade minima</label> <br>
         <select  type="search" id="escolaridade_minima" name="escolaridade_minima" required/>
@@ -41,6 +64,8 @@
         </select>
     </div>
         <hr>
-       <button type="submit"> Salvar</button>
+       <button id="bt_cadastrar" type="submit"> Salvar</button>
    
 </form>
+<body>
+</html>

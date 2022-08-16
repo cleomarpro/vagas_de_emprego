@@ -1,6 +1,28 @@
  
-        <form class='form_logim' method="post" >
-            <P  style="color:black; font-size: 25px;">Novo candidato</P>
+{% load static%}
+<!DOCTYPE html>
+
+<html lang= "pt-br" >
+    <head>
+
+        <meta charcet="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel = "icon" type = "image/png" href = "{% static 'img/v.png' %}"/>
+        <title>  Vagas de emprego  </title>
+        
+        <script type="module" src="{% static 'js/mascaras.js' %}"></script>
+        <link rel="stylesheet" href= "{% static '/style/novo_usuario.css'%}">
+        
+        <meta charcet="UTF-8">
+        <meta name="cor" content="width=device-width,initial=scale=1">
+        <meta name="description" content="Vagas de emprego">
+        <meta name="keyWords" content="Vagas de emprego, emprego, vagas">
+        <meta name="author" content="cor">
+    
+    </head>
+    <div class='div_mae'>
+        <form class='novo_usuario' method="post" >
+            <P  style="color:black; font-size: 25px;">Vagas de emprego</P>
             {% csrf_token %}
             <hr>
             {% if mensagen_de_erro_email %}
@@ -8,24 +30,28 @@
             <label style='color:red;'>{{mensagen_de_erro_email}}!</label>
             {% endif %} <br>
             
-            <input class="form_novo_usuário"   Type='email' name='email' 
+            <input   Type='email' name='email' 
                 id='email' maxlength="50" placeholder="E-mail*..." required/>
             <br>
             <br>
-            <input class="form_novo_usuário" Type='password' name='password' id='password' 
+            <input Type='password' name='password' id='password' 
                 minlength="6" maxlength="20" placeholder="Senha*..." required/>
             <br> 
             <br> 
-            <input class="form_novo_usuário" Type='text' name='nome' id='nome' 
+            <input Type='text' name='nome' id='first_name' 
                 minlength="6" maxlength="20" placeholder="Nome..." required/>
             <br> 
             <br> 
-            <input class="form_novo_usuário" Type='text' name='segundo_nome' id='segundo_nome' 
+            <input  Type='text' name='segundo_nome' id='last_name' 
                 minlength="6" maxlength="20" placeholder="Segundo Nome..." required/>
             <br> 
             <br>  
-            <input id='bt_login' type="submit" value="Cadastra">
+            <input id='bt_cadastrar' type="submit" value="Cadastra">
             <br>
             <br>
              
         </form>
+    </div>
+
+    <body>
+    </html>

@@ -1,5 +1,36 @@
-Candidatos
-{% for candidatos in candidatos%}
-<li>{{candidatos.dados_pessoais.nome}} {{candidatos.dados_pessoais.segundo_nome}} </li>
-<p><a href="{% url 'curriculo' candidatos.owner.id %}">Ver curriculo </a></p>
-{%endfor%}
+{% load static%}
+<!DOCTYPE html>
+
+<html lang= "pt-br" >
+<head>
+
+    <meta charcet="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel = "icon" type = "image/png" href = "{% static 'img/v.png' %}"/>
+    <title>  Vagas de emprego  </title>
+    
+    <script type="module" src="{% static 'js/mascaras.js' %}"></script>
+    <link rel="stylesheet" href= "{% static '/style/candidatos.css'%}">
+    
+    <meta charcet="UTF-8">
+    <meta name="cor" content="width=device-width,initial=scale=1">
+    <meta name="description" content="Vagas de emprego">
+    <meta name="keyWords" content="Vagas de emprego, emprego, vagas">
+    <meta name="author" content="cor">
+
+    </head>
+    <label class="bt_label"><a href="{% url 'vagas_cadastradas'%}">Voltar </a></label>
+    <hr>
+        <h3 id="titulo_candidato">Candidatos</h3>
+        {% for candidatos in candidatos%}
+        <ul class="ul_candidatos"> 
+            <br>
+            <li>{{candidatos.dados_pessoais.nome}} {{candidatos.dados_pessoais.segundo_nome}} </li> 
+            
+            <label class="link_label"><a href="{% url 'curriculo' candidatos.owner.id %}">Ver curriculo </a></label>
+            <hr>
+        </ul>
+        
+        {%endfor%}
+<body>
+</html>

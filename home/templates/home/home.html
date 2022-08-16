@@ -1,4 +1,36 @@
-<p>Olá! <p></p>Voê pode postar uma vaga de emprego ou candidatar-se</p>
-<hr>
-<p><a href="{% url 'vagas_cadastradas' %}">Postar uma vaga</a>/ 
-    <a href="{% url 'vagas' %}">Candidatar-se a uma vaga</a></p>
+{% load static%}
+<!DOCTYPE html>
+
+<html lang= "pt-br" > 
+<head>
+
+    <meta charcet="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel = "icon" type = "image/png" href = "{% static 'img/v.png' %}"/>
+    <title>  Vagas de emprego  </title>
+    
+    <script type="module" src="{% static 'js/mascaras.js' %}"></script>
+    <link rel="stylesheet" href= "{% static '/style/home.css'%}">
+    
+    <meta charcet="UTF-8">
+    <meta name="cor" content="width=device-width,initial=scale=1">
+    <meta name="description" content="Vagas de emprego">
+    <meta name="keyWords" content="Vagas de emprego, emprego, vagas">
+    <meta name="author" content="cor">
+
+</head>
+    <div class='home'>
+
+
+        <P  style="color:black; font-size: 25px;">Vagas de emprego</P>
+        <hr>
+
+        <div> <label id="bt_label"><a href="{% url 'vagas_cadastradas' %}">P
+            ostar uma vaga</a></label></div>
+        <div> <label id ='bt_label'><a href="{% url 'vagas' %}">
+            Candidatar-se a uma vaga</a></label></div>
+
+    </div>
+
+<body>
+</html>
