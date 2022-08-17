@@ -2,12 +2,17 @@ from django.shortcuts import render, redirect
 from django.views import View
 from recrutador.models import Vaga
 import datetime
+from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from candidato.models import*
 
 class Curriculo(View):
     def get(self, request):
+        # recrutadores não podem visualisar algumas views como candidato pois eles não possui a classe (DadosPessoais) em models
+        user = request.user.has_perm('recrutador.view_vaga')
+        if user == True:
+            return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path)) 
         data = {}
         user_logado = request.user.id
         if PretencaoSalarial.objects.filter(owner_id = user_logado):
@@ -20,6 +25,10 @@ class Curriculo(View):
 
 class MinhasVagas(LoginRequiredMixin, View):
     def get(self, request):
+        # recrutadores não podem visualisar algumas views como candidato pois eles não possui a classe (DadosPessoais) em models
+        user = request.user.has_perm('recrutador.view_vaga')
+        if user == True:
+            return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path)) 
         data = {}
         data['minhas_vagas'] = MinhaIscricao.objects.filter(owner_id = request.user.id)
         return render(
@@ -42,6 +51,10 @@ class Vagas(LoginRequiredMixin, View):
 
 class MinhaIscricaoCreate(LoginRequiredMixin, View):
     def get(self, request, id):
+        # recrutadores não podem visualisar algumas views como candidato pois eles não possui a classe (DadosPessoais) em models
+        user = request.user.has_perm('recrutador.view_vaga')
+        if user == True:
+            return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path)) 
         user_logado = request.user.id
         vaga = MinhaIscricao.objects.filter(owner_id = user_logado, vaga_id = id)
         if vaga:
@@ -57,6 +70,10 @@ class MinhaIscricaoCreate(LoginRequiredMixin, View):
 
 @login_required()
 def iscricao_delete (request, id):
+    # recrutadores não podem visualisar algumas views como candidato pois eles não possui a classe (DadosPessoais) em models
+    user = request.user.has_perm('recrutador.view_vaga')
+    if user == True:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path)) 
     iscricao = MinhaIscricao.objects.filter(id = id) or None
     if request.method == 'POST':
         iscricao.delete()
@@ -66,7 +83,11 @@ def iscricao_delete (request, id):
             request, 'candidato/confirm_delete.html')
 
 class EscolaridadeCreate(LoginRequiredMixin, View):
-    def get(self, request):    
+    def get(self, request):  
+         # recrutadores não podem visualisar algumas views como candidato pois eles não possui a classe (DadosPessoais) em models
+        user = request.user.has_perm('recrutador.view_vaga')
+        if user == True:
+            return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))   
         return render(
             request, 'candidato/escolaridade.html')
 
@@ -92,6 +113,10 @@ class EscolaridadeCreate(LoginRequiredMixin, View):
 
 class EscolaridadeUpdate( LoginRequiredMixin, View):
     def get(self, request, id):
+        # recrutadores não podem visualisar algumas views como candidato pois eles não possui a classe (DadosPessoais) em models
+        user = request.user.has_perm('recrutador.view_vaga')
+        if user == True:
+            return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path)) 
         data = {}
         data['escolaridade'] = Escolaridade.objects.get(id = id)
         return render(
@@ -117,6 +142,10 @@ class EscolaridadeUpdate( LoginRequiredMixin, View):
 
 @login_required()
 def escolaridade_delete (request, id):
+    # recrutadores não podem visualisar algumas views como candidato pois eles não possui a classe (DadosPessoais) em models
+    user = request.user.has_perm('recrutador.view_vaga')
+    if user == True:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path)) 
     escolaridade = Escolaridade.objects.get(id = id) or None
     if request.method == 'POST':
         escolaridade.delete()
@@ -127,6 +156,10 @@ def escolaridade_delete (request, id):
 
 class ExperienciaCreate(LoginRequiredMixin, View):
     def get(self, request):
+        # recrutadores não podem visualisar algumas views como candidato pois eles não possui a classe (DadosPessoais) em models
+        user = request.user.has_perm('recrutador.view_vaga')
+        if user == True:
+            return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path)) 
         return render(
             request, 'candidato/experiencia.html')
     def post(self, request):
@@ -150,6 +183,10 @@ class ExperienciaCreate(LoginRequiredMixin, View):
 
 class ExperienciaUpdate(LoginRequiredMixin, View):
     def get(self, request, id):
+        # recrutadores não podem visualisar algumas views como candidato pois eles não possui a classe (DadosPessoais) em models
+        user = request.user.has_perm('recrutador.view_vaga')
+        if user == True:
+            return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path)) 
         data = {}
         data['experiencia'] = Experiencia.objects.get(id = id)
         return render(
@@ -174,6 +211,10 @@ class ExperienciaUpdate(LoginRequiredMixin, View):
 
 @login_required()
 def experiencia_delete (request, id):
+    # recrutadores não podem visualisar algumas views como candidato pois eles não possui a classe (DadosPessoais) em models
+    user = request.user.has_perm('recrutador.view_vaga')
+    if user == True:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path)) 
     experiencia = Experiencia.objects.get(id = id) or None
     if request.method == 'POST':
         experiencia.delete()
@@ -184,6 +225,10 @@ def experiencia_delete (request, id):
 
 class PretencaoSalarialUpdate(LoginRequiredMixin, View):
     def get(self, request):
+        # recrutadores não podem visualisar algumas views como candidato pois eles não possui a classe (DadosPessoais) em models
+        user = request.user.has_perm('recrutador.view_vaga')
+        if user == True:
+            return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path)) 
         return render(
             request, 'candidato/pretencao_salarial.html')
     def post(self, request):
@@ -206,6 +251,10 @@ class PretencaoSalarialUpdate(LoginRequiredMixin, View):
 
 class DadosPessoaisUpdate(LoginRequiredMixin, View):
     def get(self, request, id):
+        # recrutadores não podem visualisar algumas views como candidato pois eles não possui a classe (DadosPessoais) em models
+        user = request.user.has_perm('recrutador.view_vaga')
+        if user == True:
+            return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path)) 
         data = {}
         data['dados_pessoais'] = DadosPessoais.objects.get(id=id)
         return render(

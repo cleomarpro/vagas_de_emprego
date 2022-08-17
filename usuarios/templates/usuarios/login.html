@@ -31,9 +31,13 @@
             {% endif %}
 
             {% if next %}
+            {% if user.is_authenticated %}
+            <p style='color: red;' > Você está sem permissão de acesso, por favor,
+            entre com outro usuário ou cria um novo!</p>
+            {% else %}
                 <p style='color: red;'>Para continuar é necessário fazer login!</p>
             {% endif %}
-            
+            {% endif %}
                 <hr>
             <label id="username">Usuário:</label> <br>
                 <td>{{ form.username }}</td>
@@ -52,6 +56,7 @@
              <h5>Ou cadastre-se!</h5>
                 <button id="bt_cadastrar"><a href="{% url 'recrutador_novo' %}">
                 Recrutador</a></button>
+                
                  <button id="bt_cadastrar"><a href="{% url 'candidato_novo' %}">
                     Candidatar</a></button>
             <br>
