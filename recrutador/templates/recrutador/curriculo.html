@@ -24,17 +24,17 @@
     <label class="bt_label"><a href="{% url 'vagas_cadastradas'%}">Minhas Vagas </a></label>
     <label class='bt_label'> <a  href="{% url 'home'%}">Home</a></label>
     <hr>
-    <label class="titulo_curriculo">Dados pessoais</label>
+    <h3 class="titulo_curriculo">Dados pessoais</h3>
     <ul class='ul_curriculo'>
-        <li>{{dados_pessoais.nome}} {{dados_pessoais.segundo_nome}}</li>
-        <li>{{dados_pessoais.email}}</li>
-        <li>{{dados_pessoais.telefone}}</li>
-    </ul>>
-    <label class="titulo_curriculo">Pretenção salarial</label>
+        <li>{{dados_pessoais.nome}} {{dados_pessoais.segundo_nome}}</li><br>
+        <li>{{dados_pessoais.email}}</li><br>
+        <li>{{dados_pessoais.telefone}}</li><br>
+    </ul>
+    <h3 class="titulo_curriculo">Pretenção salarial</h3>
     <ul>
         <li>{{pretencao_salarial.pretencao_salarial}}</li><br>
     </ul>
-    <label class="titulo_curriculo"> Escolaridade</label><br>
+    <h3 class="titulo_curriculo"> Escolaridade</h3><br>
     {%for escolaridade in escolaridade%}
     <ul class='ul_curriculo'> 
         <li>{{escolaridade.instituicao}}</li><br>
@@ -45,7 +45,7 @@
     </ul>
     {%endfor%}
 
-    <label class="titulo_curriculo">Experiência</label>
+    <h3 class="titulo_curriculo">Experiência</h3>
     {%for experiencia in experiencia%}
     <ul class='ul_curriculo'>
         <li>{{experiencia.nome_da_empresa}}</li><br>
