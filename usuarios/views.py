@@ -54,7 +54,7 @@ class RecrutadorUseCreate(View):
                 first_name = request.POST['first_name'],
                 last_name = request.POST['last_name'],
                 )
-            
+            # Atribuindo permissões ao usuário cadastrado
             permissao1 = Permission.objects.get(codename='add_vaga')
             permissao2 = Permission.objects.get(codename='change_vaga')
             permissao3 = Permission.objects.get(codename='delete_vaga')
