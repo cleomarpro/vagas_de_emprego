@@ -1,48 +1,74 @@
 
+        
+{% load static%}
+<!DOCTYPE html>
 
-    <div class='div_mae'>
-      
-        <form class='form_logim' method="post" >
-            <P  style="color:black; font-size: 25px;">Experiência</P>
-            {% csrf_token %}
+<html lang= "pt-br" >
+<head>
 
-            <div>
-                <label>Nome da empresa</label> <br>
-                    <input style='width:200px;' Type='text' 
-                        value="{{experiencia.nome_da_empresa}}"
-                        maxlength="50"  name= 'nome_da_empresa'id= 'nome_da_empresa' required/>
-            </div>
+    <meta charcet="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel = "icon" type = "image/png" href = "{% static 'img/v.png' %}"/>
+    <title>  Vagas de emprego  </title>
+    
+    <script type="module" src="{% static 'js/mascaras.js' %}"></script>
+    <link rel="stylesheet" href= "{% static '/style/formularios.css'%}">
+    
+    <meta charcet="UTF-8">
+    <meta name="cor" content="width=device-width,initial=scale=1">
+    <meta name="description" content="Vagas de emprego">
+    <meta name="keyWords" content="Vagas de emprego, emprego, vagas">
+    <meta name="author" content="cor">
 
-            <div>
-                <label>Cargo</label> <br>
-                    <input style='width:200px;' Type='text'
-                        value="{{experiencia.cargo}}"
-                        maxlength="30"  name= 'cargo'id= 'cargo' required/>
-            </div>
-            <div>
-                <label>Data de entrada</label> <br>
-                    <input style='width:200px;' Type='date'
-                        value="{{experiencia.data_de_inicio  | date:'Y-m-d'}}"
-                        name= 'data_de_inicio'id= 'data_de_inicio' required/>
-            </div>
-            <div>
-                <label>Data de saida</label> <br>
-                    <input style='width:200px;' Type='date'
-                        value="{{experiencia.data_de_saida  | date:'Y-m-d'}}"
-                        name= 'data_de_saida'id= 'data_de_saida' required/>
-            </div>
-            <div>
-                <label>Obiservação</label> <br>
-                    <input style='width:200px;' Type='text'
-                        value="{{experiencia.obiservacao}}"
-                        maxlength="200"  name= 'obiservacao'id= 'obiservacao' required/>
-            </div>
-                
-            <input id='bt_login' type="submit" value="Cadastre-se">
-            <br>
-            <br>
-            
-        </form>
+</head>
+<body>
+
+    <form class='formulario' method="post" >
+        <P  style="color:black; font-size: 25px;">Experiência</P>
+        {% csrf_token %}
+
+        <div>
+            <label>Nome da empresa</label> <br>
+                <input  Type='text' 
+                    value="{{experiencia.nome_da_empresa}}"
+                    maxlength="50"  name= 'nome_da_empresa'id= 'nome_da_empresa' required/>
+        </div>
+
+        <div>
+            <label>Cargo</label> <br>
+                <input  Type='text'
+                    value="{{experiencia.cargo}}"
+                    maxlength="30"  name= 'cargo'id= 'cargo' required/>
+        </div>
+        <div>
+            <label>Data de entrada</label> <br>
+                <input Type='date'
+                    value="{{experiencia.data_de_inicio  | date:'Y-m-d'}}"
+                    name= 'data_de_inicio'id= 'data_de_inicio' required/>
+        </div>
+        <div>
+            <label>Data de saida</label> <br>
+                <input  Type='date'
+                    value="{{experiencia.data_de_saida  | date:'Y-m-d'}}"
+                    name= 'data_de_saida'id= 'data_de_saida' required/>
+        </div>
+        <div>
+            <label>Obiservação</label> <br>
+                <input  Type='text'
+                    value="{{experiencia.obiservacao}}"
+                    maxlength="200"  name= 'obiservacao'id= 'obiservacao' required/>
+        </div>
+        <br>
+        {%if experiencia%}
+        <input id='bt_cadastrar' type="submit" value="Atualizar">
+        <br>
+        <br>
+        {% else %}
+        <input id='bt_cadastrar' type="submit" value="Cadastre-se">
+        <br>
+        <br>
+        {% endif%}
+    </form>
 
 <body>
 </html>

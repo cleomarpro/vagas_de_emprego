@@ -1,41 +1,72 @@
-<h2>Formação</h2>
       
-        <form class='form_logim' method="post" >
-            {% csrf_token %}
-            <div>
-                <label>Instituição</label> <br>
-                    <input style='width:200px;' Type='text' 
-                        value="{{ escolaridade.instituicao }}"
-                        maxlength="50"  name= 'instituicao'id= 'instituicao' required/>
-            </div>
+{% load static%}
+<!DOCTYPE html>
 
-            <div>
-                <label>Curso</label> <br>
-                    <input style='width:200px;' Type='text'
-                        value=" {{ escolaridade.curso }}"
-                        maxlength="30"  name= 'curso'id= 'curso' required/>
-            </div>
-            <div>
-                <label>Data de inicio</label> <br>
-                    <input style='width:200px;' Type='date' 
-                        value="{{ escolaridade.data_de_inicio  | date:'Y-m-d'}}"
-                        name= 'inicio'id= 'inicio' required/>
-            </div>
-            <div>
-                <label>Data de termino</label> <br>
-                    <input style='width:200px;' Type='date'
-                        value="{{ escolaridade.data_de_termino  | date:'Y-m-d'}}"
-                        name= 'data_de_termino'id= 'data_de_termino' required/>
-            </div>
-            <div>
-                <label>Observação</label> <br>
-                    <input style='width:200px;' Type='text'
-                        value="{{ escolaridade.obiservacao}}"
-                        maxlength="200"  name= 'obiservacao'id= 'obiservacao' required/>
-            </div>
-                
-            <input id='bt_login' type="submit" value="Atualizar">
-            <br>
-            <br>
-            
-        </form>
+<html lang= "pt-br" >
+<head>
+
+    <meta charcet="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel = "icon" type = "image/png" href = "{% static 'img/v.png' %}"/>
+    <title>  Vagas de emprego  </title>
+    
+    <script type="module" src="{% static 'js/mascaras.js' %}"></script>
+    <link rel="stylesheet" href= "{% static '/style/formularios.css'%}">
+    
+    <meta charcet="UTF-8">
+    <meta name="cor" content="width=device-width,initial=scale=1">
+    <meta name="description" content="Vagas de emprego">
+    <meta name="keyWords" content="Vagas de emprego, emprego, vagas">
+    <meta name="author" content="cor">
+
+</head>
+<body>
+    
+    <form class='formulario' method="post" >
+        <P  style="color:black; font-size: 25px;">Escolaridade</P>
+        {% csrf_token %}
+        <div>
+            <label>Instituição</label> <br>
+                <input Type='text' 
+                    value="{{ escolaridade.instituicao }}"
+                    maxlength="50"  name= 'instituicao'id= 'instituicao' required/>
+        </div>
+
+        <div>
+            <label>Curso</label> <br>
+                <input  Type='text'
+                    value=" {{ escolaridade.curso }}"
+                    maxlength="30"  name= 'curso'id= 'curso' required/>
+        </div>
+        <div>
+            <label>Data de inicio</label> <br>
+                <input  Type='date' 
+                    value="{{ escolaridade.data_de_inicio  | date:'Y-m-d'}}"
+                    name= 'inicio'id= 'inicio' required/>
+        </div>
+        <div>
+            <label>Data de termino</label> <br>
+                <input  Type='date'
+                    value="{{ escolaridade.data_de_termino  | date:'Y-m-d'}}"
+                    name= 'data_de_termino'id= 'data_de_termino' required/>
+        </div>
+        <div>
+            <label>Observação</label> <br>
+                <input  Type='text'
+                    value="{{ escolaridade.obiservacao}}"
+                    maxlength="200"  name= 'obiservacao'id= 'obiservacao' required/>
+        </div>
+        <br>
+        {% if escolaridade %}
+        <input id='bt_cadastrar' type="submit" value="Atualizar">
+        <br>
+        <br>
+        {% else %}
+        <input id='bt_cadastrar' type="submit" value="Adicionar">
+        <br>
+        <br>
+        {% endif %}
+        
+    </form>
+</body>
+</html>

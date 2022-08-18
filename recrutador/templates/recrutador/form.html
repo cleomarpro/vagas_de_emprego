@@ -10,7 +10,7 @@
     <title>  Vagas de emprego  </title>
     
     <script type="module" src="{% static 'js/mascaras.js' %}"></script>
-    <link rel="stylesheet" href= "{% static '/style/nova_vaga.css'%}">
+    <link rel="stylesheet" href= "{% static '/style/formularios.css'%}">
     
     <meta charcet="UTF-8">
     <meta name="cor" content="width=device-width,initial=scale=1">
@@ -18,54 +18,54 @@
     <meta name="keyWords" content="Vagas de emprego, emprego, vagas">
     <meta name="author" content="cor">
 
-    </head>
-
-<form class="form_nova_vaga" class='formulario'  method="POST" >
-    <P  style="color:black; font-size: 25px;">Nova vaga</P>
-    {% csrf_token %}
-    <hr> 
-    <div>
-        <label>Nome da vaga</label>
-        <input placeholder=" Nome da vaga..." type="text" id="nome_da_vaga" 
-            name="nome_da_vaga" value="{{vaga.nome_da_vaga}}"  required/>
-    </div>
-    <br>
-    <div>
-        <label>Faixa salarial</label> <br>
-            <select  type="search" id="faixa_salarial" name="faixa_salarial" required/>
+</head>
+<body>
+    <form class='formulario'  method="POST" >
+        <P  style="color:black; font-size: 25px;">Nova vaga</P>
+        {% csrf_token %}
+        <hr> 
+        <div>
+            <label>Nome da vaga</label>
+            <input placeholder=" Nome da vaga..." type="text" id="nome_da_vaga" 
+                name="nome_da_vaga" value="{{vaga.nome_da_vaga}}"  required/>
+        </div>
+        <br>
+        <div>
+            <label>Faixa salarial</label> <br>
+                <select  type="search" id="faixa_salarial" name="faixa_salarial" required/>
+                    <tr>
+                        {% if vaga.faixa_salarial%}
+                            <option>{{vaga.faixa_salarial}}</option>
+                        {%endif%}
+                        <option>Selecionar</option>
+                        <option value='Até 1000'> Até 1000</option>
+                        <option value='1000 a 2000'> 1000 a 2000</option>
+                        <option value='2000 a 3000'> 2000 a 3000</option>
+                        <option value='A cima 3000'> Acima de  3000</option>
+                    </tr>
+                </select>
+        </div> 
+        <br>
+        <div>
+            <label>Escolaridade minima</label> <br>
+            <select  type="search" id="escolaridade_minima" name="escolaridade_minima" required/>
                 <tr>
                     {% if vaga.faixa_salarial%}
-                        <option>{{vaga.faixa_salarial}}</option>
+                        <option>{{vaga.escolaridade_minima}}</option>
                     {%endif%}
-                    <option>Selecionar</option>
-                    <option value='Até 1.000'> Até 1000</option>
-                    <option value='1000 a 2.0000'> 1000 a 2000</option>
-                    <option value='2.000 a 3.000'> 2000 a 3000</option>
-                    <option value='Acima de  3.000'> Acima de  3000</option>
+                    <option >Selecionar</option>
+                    <option value='Ensino fundamental'> Ensino fundamental</option>
+                    <option value='Ensino médio'> Ensino médio</option>
+                    <option value='Tecnólogo'> Tecnólogo</option>
+                    <option value='Ensino Superior'> Ensino Superior</option>
+                    <option value='Pós / MBA / Mestrado'> Pós / MBA / Mestrado</option>
+                    <option value='Doutorado'> Doutorado</option>
                 </tr>
             </select>
-    </div> 
-    <br>
-    <div>
-        <label>Escolaridade minima</label> <br>
-        <select  type="search" id="escolaridade_minima" name="escolaridade_minima" required/>
-            <tr>
-                {% if vaga.faixa_salarial%}
-                    <option>{{vaga.escolaridade_minima}}</option>
-                {%endif%}
-                <option >Selecionar</option>
-                <option value='Ensino fundamental'> Ensino fundamental</option>
-                <option value='Ensino médio'> Ensino médio</option>
-                <option value='Tecnólogo'> Tecnólogo</option>
-                <option value='Ensino Superior'> Ensino Superior</option>
-                <option value='Pós / MBA / Mestrado'> Pós / MBA / Mestrado</option>
-                <option value='Doutorado'> Doutorado</option>
-            </tr>
-        </select>
-    </div>
-        <hr>
-       <button id="bt_cadastrar" type="submit"> Salvar</button>
-   
-</form>
-<body>
+        </div>
+            <hr>
+        <button id="bt_cadastrar" type="submit"> Salvar</button>
+    
+    </form>
+</body>
 </html>

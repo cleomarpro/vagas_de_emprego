@@ -14,7 +14,8 @@ class Candidato(View):
             return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
         data={}
         candidatos = MinhaIscricao.objects.filter(vaga_id = id)
-        data['candidatos'] = MinhaIscricao.objects.filter(vaga_id = id)
+       
+        data['candidatos'] = candidatos
         return render(
             request, 'recrutador/candidatos.html',data)
             

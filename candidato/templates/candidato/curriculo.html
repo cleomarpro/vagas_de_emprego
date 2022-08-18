@@ -34,7 +34,15 @@
         <ul class='ul_curriculo'> 
             <li><b>Pretenção salarial:</b>{{pretencao_salarial.pretencao_salarial}}</li> <br>
         </ul>
+        {%if pretencao_salarial %}
         <label class="link_label"><a href="{% url 'pretencao_salarial'%}">Atualizar</a></label>
+        <br>
+        <br>
+        {%else%}
+        <label class="link_label"><a href="{% url 'pretencao_salarial'%}">Adiciona</a></label>
+        <br>
+        <br>
+        {%endif%}
     <hr>
     <label class="titulo_curriculo"> Escolaridade</label>
         {%for escolaridade in escolaridade%}

@@ -3,7 +3,6 @@
 
 <html lang= "pt-br" > 
 <head>
-
     <meta charcet="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel = "icon" type = "image/png" href = "{% static 'img/v.png' %}"/>
@@ -17,7 +16,6 @@
     <meta name="description" content="Vagas de emprego">
     <meta name="keyWords" content="Vagas de emprego, emprego, vagas">
     <meta name="author" content="cor">
-
 </head>
 <body>
     {%if request.user.id%}
@@ -38,8 +36,17 @@
             <li>  <b>Escolaridade minima:</b>  {{ vagas.escolaridade_minima }} </li> <br>
             <li>  <b>Postado em:</b>  {{ vagas.data_hora }} </li> <br>
         </ul>
-            <label class='link_label'>  <a href="{% url 'candidato' vagas.id %}">
+        {%if request.user.id %}
+            {% if dados_pessoais and pretencao_salarial %}
+                <label class='link_label'>  <a href="{% url 'candidato' vagas.id %}">
                 Candidatar-se </a> </label> <br>
+            {%else%}
+             <label class="bt_label"><a href="{% url 'curriculo' %}">Atualizar curriculo para se candidatar</a></label>
+            {%endif%}
+        {%else%}
+            <label class="bt_label"><a href="{% url 'candidato_novo' %}">
+                Cadastras-se para se candidatar</a></label>
+        {%endif%}
     {%endfor%}
 </body>
 </html>

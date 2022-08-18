@@ -57,6 +57,17 @@ class MinhaIscricaoCreate(LoginRequiredMixin, View):
             return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path)) 
         user_logado = request.user.id
         vaga = MinhaIscricao.objects.filter(owner_id = user_logado, vaga_id = id)
+
+        pretencao_salarial = PretencaoSalarial.objects.filter(owner_id=user_logado).values()
+        if pretencao_salarial: 
+            pretencao_salarial = PretencaoSalarial.objects.get(owner_id=user_logado)
+            pretencao_salarial = pretencao_salarial.id
+        else:
+            pretencao_salarial = PretencaoSalarial.objects.create(
+                pretencao_salarial = request.POST['pretencao_salarial'],
+                owner_id = user_logado
+            )
+            pretencao_salarial = pretencao_salarial.id
         if vaga:
             return redirect('minhas_vagas')
         else:
@@ -64,7 +75,8 @@ class MinhaIscricaoCreate(LoginRequiredMixin, View):
             iscricao = MinhaIscricao.objects.create(
                 vaga_id = id,
                 dados_pessoais_id = dados_pessoais.id,
-                owner_id = user_logado
+                owner_id = user_logado,
+                pretencao_salarial_id = pretencao_salarial
                 )
             return redirect('detalhes_da_vaga', id = iscricao.id)
 
@@ -238,6 +250,7 @@ class PretencaoSalarialUpdate(LoginRequiredMixin, View):
             pretencao_salarial_id = PretencaoSalarial.objects.get(owner_id = user_logado)
             pretencao_salarial_id = pretencao_salarial_id.id
             pretencao_salarial = PretencaoSalarial.objects.get(id = pretencao_salarial_id)
+            
             pretencao_salarial.id = pretencao_salarial_id
             pretencao_salarial.pretencao_salarial = request.POST['pretencao_salarial']
             pretencao_salarial.owner_id = user_logado

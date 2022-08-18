@@ -21,16 +21,16 @@
     </head>
     <label class="bt_label"><a href="{% url 'vagas_cadastradas'%}">Voltar </a></label>
     <hr>
-        <h3 id="titulo_candidato">Candidatos</h3>
+        <h3 id="titulo_candidato">Candidatos </h3>
+       
         {% for candidatos in candidatos%}
         <ul class="ul_candidatos"> 
             <br>
-            <li>{{candidatos.dados_pessoais.nome}} {{candidatos.dados_pessoais.segundo_nome}} </li> 
-            
+            <li>{{candidatos.dados_pessoais.nome}} {{candidatos.dados_pessoais.segundo_nome}} </li>  
             <label class="link_label"><a href="{% url 'curriculo' candidatos.owner.id %}">Ver curriculo </a></label>
             <hr>
         </ul>
-        
+       
         {%endfor%}
 <body>
 </html>

@@ -1,17 +1,42 @@
 
-        <form class='form_logim' method="post" >
-            <P  style="color:black; font-size: 25px;">Pretenção salarial</P>
-            {% csrf_token %}
-            <hr>
-            <input class="form_novo_usuário" Type='text' 
-                name='pretencao_salarial' id='pretencao_salarial' 
-                 placeholder="Pretenção salarial..." required/>
-            <br> 
-            <br>  
-            <input id='bt_login' type="submit" value="atualizar">
-            <br>
-            <br>
-             
-        </form>
+        
+{% load static%}
+<!DOCTYPE html>
 
-l>
+<html lang= "pt-br" >
+<head>
+
+    <meta charcet="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel = "icon" type = "image/png" href = "{% static 'img/v.png' %}"/>
+    <title>  Vagas de emprego  </title>
+    
+    <script type="module" src="{% static 'js/mascaras.js' %}"></script>
+    <link rel="stylesheet" href= "{% static '/style/formularios.css'%}">
+    
+    <meta charcet="UTF-8">
+    <meta name="cor" content="width=device-width,initial=scale=1">
+    <meta name="description" content="Vagas de emprego">
+    <meta name="keyWords" content="Vagas de emprego, emprego, vagas">
+    <meta name="author" content="cor">
+
+</head>
+<body>
+
+    <form class='formulario' method="post" >
+        <P  style="color:black; font-size: 25px;">Pretenção salarial</P>
+        {% csrf_token %}
+        <hr>
+        <input class="form_novo_usuário" Type='text' 
+            name='pretencao_salarial' id='pretencao_salarial' 
+                placeholder="Pretenção salarial..." required/>
+        <br> 
+        <br>  
+        <input id='bt_cadastrar' type="submit" value="atualizar">
+        <br>
+        <br>
+            
+    </form>
+
+</body>
+</html>

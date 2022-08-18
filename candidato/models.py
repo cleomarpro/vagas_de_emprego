@@ -9,12 +9,16 @@ class DadosPessoais (models.Model):
     telefone = models.CharField(max_length=50, null=True)
     email = models.CharField(max_length=50, null=False)
     owner = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
+class PretencaoSalarial (models.Model):
+    pretencao_salarial = models.CharField(max_length=50, null=False)
+    owner = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
 
 class MinhaIscricao(models.Model):
     owner = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
     data_hora = models.DateTimeField(default=timezone.now)
     vaga = models.ForeignKey(Vaga, null=False, on_delete=models.CASCADE)
     dados_pessoais = models.ForeignKey(DadosPessoais, null=False, on_delete=models.CASCADE)
+    pretencao_salarial = models.ForeignKey(PretencaoSalarial, null=True, on_delete=models.CASCADE)
 
 class VagaIscricao (models.Model):
     vaga = models.ForeignKey(Vaga, null=False, on_delete=models.CASCADE)
@@ -36,7 +40,5 @@ class Escolaridade (models.Model):
     obiservacao = models.CharField(max_length=200, blank=True)
     owner = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
     
-class PretencaoSalarial (models.Model):
-    pretencao_salarial = models.CharField(max_length=50, null=False)
-    owner = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
+
 
