@@ -14,10 +14,50 @@ class Candidato(View):
             return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
         data={}
         candidatos = MinhaIscricao.objects.filter(vaga_id = id)
-       
-        data['candidatos'] = candidatos
-        return render(
-            request, 'recrutador/candidatos.html',data)
+        candidato = MinhaIscricao.objects.all().values('id',
+            'pretencao_salarial__pretencao_salarial','vaga__faixa_salarial')
+        candidato= list(candidato)
+        pontuacao = 3
+        a = 'Até 1000'
+        b = '1000 a 2000'
+        c = '2000 a 3000'
+        d = 'Acima de 3000'
+        for pontuacao_candidato in candidato:
+            pretencao_salarial = pontuacao_candidato['pretencao_salarial__pretencao_salarial']
+            faixa_salaria = pontuacao_candidato['vaga__faixa_salarial']
+            
+            
+            if  faixa_salaria == a:
+                pontuacao = float(pretencao_salarial) <= 1000
+                if pontuacao == True:
+                    pontuacao = 1
+                else:
+                    pontuacao = 0
+            elif faixa_salaria == b:
+                pontuacao = float(pretencao_salarial) >= 1000 and  float(pretencao_salarial) <= 2000
+                if pontuacao == True:
+                    pontuacao = 1
+                else:
+                    pontuacao = 0
+                   
+            elif faixa_salaria == c:
+                pontuacao = float(pretencao_salarial) >= 2000 and  float(pretencao_salarial) <= 3000
+                if pontuacao == True:
+                    pontuacao = 1
+                else:
+                    pontuacao = 0
+                  
+            elif faixa_salaria == c:
+                pontuacao = float(pretencao_salarial) > 3000
+                if pontuacao == True:
+                    pontuacao = 1
+                else:
+                    pontuacao = 0
+                
+            data['pontuacao'] = pontuacao
+            data['candidatos'] = candidatos
+            return render(
+                request, 'recrutador/candidatos.html',data)
             
 class VagasCadastradas(View):
     def get(self, request):
